@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <group :title=" $t('Automatic countdown') ">
+      <cell title="15s" v-model="value">
+        <countdown v-model="time1" @on-finish="finish" v-show="show"></countdown>
+      </cell>
+    </group>
+    <group :title=" $t('Manually') ">
+      <x-switch :title=" $t('Start') " v-model="start"></x-switch>
+      <cell title="15s">
+        <countdown v-model="time2" :start="start" @on-finish="finish2"></countdown>
+      </cell>
+    </group>
+  </div>
+</template>
+
+<script>
+import { Group, Cell, Countdown, XSwitch } from '@/components'
+
+export default {
+  components: {
+    Group,
+    Cell,
+    Countdown,
+    XSwitch
+  },
+  data () {
+    return {
+      show: true,
+      time1: 15,
+      time2: 15,
+      value: '',
+      start: false
+    }
+  },
+  methods: {
+    finish (index) {
+      this.show = false
+      this.value = 'completed'
+      console.log('current index', index)
+    },
+    finish2 (index) {
+      this.start = false
+      this.time2 = 15
+    }
+  }
+}
+</script>

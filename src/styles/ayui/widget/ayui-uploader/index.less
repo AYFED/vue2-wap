@@ -1,0 +1,99 @@
+@import "../../base/fn";
+
+.ayui-uploader{}
+.ayui-uploader__hd{
+    display: flex;
+    padding-bottom: @ayuiCellGapV;
+    align-items: center;
+}
+.ayui-uploader__title{
+    flex: 1;
+}
+.ayui-uploader__info{
+    color: @ayuiTextColorTips;
+}
+
+.ayui-uploader__bd{
+    margin-bottom: @ayuiCellGapH - (@ayuiCellGapV + @ayuiUploaderFileSpacing);
+    margin-right: -@ayuiUploaderFileSpacing;
+    overflow: hidden;
+}
+.ayui-uploader__files{
+    list-style: none;
+}
+.ayui-uploader__file{
+    float: left;
+    margin-right: @ayuiUploaderFileSpacing;
+    margin-bottom: @ayuiUploaderFileSpacing;
+    width: @ayuiUploaderSize;
+    height: @ayuiUploaderSize;
+    background: no-repeat center center;
+    background-size: cover;
+}
+.ayui-uploader__file_status{
+    position: relative;
+    &:before{
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .5);
+    }
+    .ayui-uploader__file-content{
+        display: block;
+    }
+}
+.ayui-uploader__file-content{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFFFFF;
+    .ayui-icon-warn{
+        display: inline-block;
+    }
+}
+.ayui-uploader__input-box{
+    float:left;
+    position: relative;
+    margin-right: @ayuiUploaderFileSpacing;
+    margin-bottom: @ayuiUploaderFileSpacing;
+    width: @ayuiUploaderSize - @ayuiUploaderBorderWidth * 2;
+    height: @ayuiUploaderSize - @ayuiUploaderBorderWidth * 2;
+    border: @ayuiUploaderBorderWidth solid @ayuiUploaderBorderColor;
+    &:before, &:after{
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: @ayuiUploaderBorderColor;
+    }
+    &:before{
+        width: @ayuiUploaderBorderWidth + 1;
+        height: @ayuiUploaderSize / 2;
+    }
+    &:after{
+        width: @ayuiUploaderSize / 2;
+        height: @ayuiUploaderBorderWidth + 1;
+    }
+    &:active{
+        border-color: @ayuiUploaderActiveBorderColor;
+        &:before, &:after{
+            background-color: @ayuiUploaderActiveBorderColor;
+        }
+    }
+}
+.ayui-uploader__input{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    .setTapColor();
+}

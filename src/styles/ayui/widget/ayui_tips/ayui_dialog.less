@@ -1,0 +1,140 @@
+@import "../../base/fn";
+
+@dialog-button-text-primary-color: #1F99F4;
+@dialog-button-text-primary-weight: 200;
+
+.ayui-dialog {
+  position: fixed;
+  z-index: 5000;
+  width: 80%;
+  max-width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: @ayuiDialogBackgroundColor;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.ayui-dialog__hd {
+  padding: 1.3em @ayuiDialogGapWidth .5em;
+}
+
+.ayui-dialog__title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.ayui-dialog__bd {
+  padding: 0 @ayuiDialogGapWidth .8em;
+  min-height: 40px;
+  font-size: 15px;
+  line-height: 1.3;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: @ayuiTextColorGray;
+  &:first-child {
+    padding: 2.7em 20px 1.7em;
+    color: #353535;
+  }
+}
+
+.ayui-dialog__ft {
+  position: relative;
+  line-height: 40px;
+  font-size: 18px;
+  display: flex;
+  width: 80%;
+  margin: 0 auto 20px;
+}
+
+.ayui-dialog__btn {
+  display: block;
+  flex: 1;
+  color: @ayuiDialogLinkColor;
+  text-decoration: none;
+  border: 1px solid #DFDFDF;
+  border-radius: 40px;
+  .setTapColor();
+  &:active {
+    background-color: @ayuiDialogLinkActiveBc;
+  }
+
+  position: relative;
+  &:first-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.ayui-dialog__btn_default {
+  color: @dialog-button-text-default-color;
+}
+
+.ayui-dialog__btn_primary {
+  margin-left: 5%;
+  color: @dialog-button-text-primary-color;
+  font-weight: @dialog-button-text-primary-weight;
+}
+
+.ayui-skin_android {
+  .ayui-dialog {
+    text-align: left;
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+  }
+  .ayui-dialog__title {
+    font-size: 21px;
+  }
+  .ayui-dialog__hd {
+    text-align: left;
+  }
+  .ayui-dialog__bd {
+    color: @ayuiTextColorGray;
+    padding: .25em @ayuiDialogGapWidth 2em;
+    font-size: 17px;
+    text-align: left;
+    &:first-child {
+      padding: 1.6em @ayuiDialogGapWidth 2em;
+      color: #353535;
+    }
+  }
+  .ayui-dialog__ft {
+    display: block;
+    text-align: right;
+    line-height: 42px;
+    font-size: 16px;
+    padding: 0 @ayuiDialogGapWidth .7em;
+    &:after {
+      display: none;
+    }
+  }
+  .ayui-dialog__btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 .8em;
+    &:after {
+      display: none;
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, .06);
+    }
+    &:visited {
+      background-color: rgba(0, 0, 0, .06);
+    }
+    &:last-child {
+      margin-right: -.8em;
+    }
+  }
+  .ayui-dialog__btn_default {
+    color: #808080;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .ayui-dialog {
+    width: 35%;
+  }
+}

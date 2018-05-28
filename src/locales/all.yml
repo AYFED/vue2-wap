@@ -1,0 +1,45 @@
+# This file is built by build_locales.js, so don't try to modify it manually
+en:
+  ayui.actionsheet.cancel: cancel
+  ayui.alert.button_text: OK
+  ayui.calendar.cancel_text: cancel
+  ayui.calendar.confirm_text: done
+  ayui.confirm.confirm_text: confirm
+  ayui.confirm.cancel_text: cancel
+  ayui.datetime.cancel_text: cancel
+  ayui.datetime.confirm_text: done
+  ayui.inline-calendar.week_day_0: Su
+  ayui.inline-calendar.week_day_1: Mo
+  ayui.inline-calendar.week_day_2: Tu
+  ayui.inline-calendar.week_day_3: We
+  ayui.inline-calendar.week_day_4: Th
+  ayui.inline-calendar.week_day_5: Fr
+  ayui.inline-calendar.week_day_6: Sa
+  ayui.loading.loading: loading
+  ayui.popup-picker.cancel_text: cancel
+  ayui.popup-picker.confirm_text: ok
+  ayui.search.cancel_text: cancel
+  ayui.search.placeholder: Search
+  ayui.x-header.back_text: Back
+zh-CN:
+  ayui.actionsheet.cancel: 取消
+  ayui.alert.button_text: 确定
+  ayui.calendar.cancel_text: 取消
+  ayui.calendar.confirm_text: 确定
+  ayui.confirm.confirm_text: 确定
+  ayui.confirm.cancel_text: 取消
+  ayui.datetime.cancel_text: 取消
+  ayui.datetime.confirm_text: 确定
+  ayui.inline-calendar.week_day_0: 日
+  ayui.inline-calendar.week_day_1: 一
+  ayui.inline-calendar.week_day_2: 二
+  ayui.inline-calendar.week_day_3: 三
+  ayui.inline-calendar.week_day_4: 四
+  ayui.inline-calendar.week_day_5: 五
+  ayui.inline-calendar.week_day_6: 六
+  ayui.loading.loading: 加载中
+  ayui.popup-picker.cancel_text: 取消
+  ayui.popup-picker.confirm_text: 完成
+  ayui.search.cancel_text: 取消
+  ayui.search.placeholder: 搜索
+  ayui.x-header.back_text: 返回

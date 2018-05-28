@@ -1,0 +1,24 @@
+@import "../../base/fn";
+
+.ayui-progress {
+    display: flex;
+    align-items: center;
+}
+
+.ayui-progress__bar {
+    background-color: @ayuiProgressBg;
+    height: @ayuiProgressHeight;
+    flex: 1;
+}
+
+.ayui-progress__inner-bar {
+    width: 0;
+    height: 100%;
+    background-color: @ayuiProgressColor;
+}
+
+.ayui-progress__opr {
+    display: block;
+    margin-left: 15px;
+    font-size: 0;
+}

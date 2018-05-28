@@ -1,0 +1,30 @@
+@import "../../../base/fn";
+
+.ayui-cells_checkbox {
+    .ayui-cell__hd {
+        padding-right: @ayuiCellInnerGapH;
+    }
+    .ayui-icon-checked {
+        &:before {
+            content: '\e72f';
+            color: #C9C9C9;
+            font-size: 23px;
+            display: block;
+        }
+    }
+}
+
+// method2 accessbility
+.ayui-check {
+    // checkbox
+    .ayui-cells_checkbox & {
+        &:checked {
+            & + .ayui-icon-checked {
+                &:before {
+                    content: '\e731';
+                    color: #FF5523;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+@import "../../../base/fn";
+
+.ayui-form-preview{
+    position: relative;
+    background-color: #FFFFFF;
+    &:before{
+        .setTopLine(@ayuiCellBorderColor);
+    }
+    &:after{
+        .setBottomLine(@ayuiCellBorderColor);
+    }
+}
+.ayui-form-preview__hd{
+    position: relative;
+    padding: @ayuiCellGapV @ayuiCellGapH;
+    text-align: right;
+    line-height: 2.5em;
+    &:after{
+        .setBottomLine(@ayuiCellBorderColor);
+        left: @ayuiCellGapH;
+    }
+    .ayui-form-preview__value{
+        font-style: normal;
+        font-size: 1.6em;
+    }
+}
+.ayui-form-preview__bd{
+    padding: @ayuiCellGapV @ayuiCellGapH;
+    font-size: .9em;
+    text-align: right;
+    color: @ayuiTextColorGray;
+    line-height: 2;
+}
+.ayui-form-preview__ft{
+    position: relative;
+    line-height: 50px;
+    display: flex;
+    &:after {
+        .setTopLine(@ayuiDialogLineColor);
+    }
+}
+.ayui-form-preview__item{
+    overflow: hidden;
+}
+.ayui-form-preview__label{
+    float: left;
+    margin-right: 1em;
+    min-width: 4em;
+    color: @ayuiTextColorGray;
+    text-align: justify;
+    text-align-last: justify;
+}
+.ayui-form-preview__value{
+    display: block;
+    overflow: hidden;
+    word-break:normal;
+    word-wrap: break-word;
+}
+.ayui-form-preview__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: @ayuiDialogLinkColor;
+    text-align: center;
+    .setTapColor();
+    button&{
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        line-height: inherit;
+        font-size: inherit;
+    }
+    &:active {
+        background-color: @ayuiDialogLinkActiveBc;
+    }
+    &:after {
+        .setLeftLine(@ayuiDialogLineColor);
+    }
+    &:first-child {
+        &:after {
+            display: none;
+        }
+    }
+}
+.ayui-form-preview__btn_default {
+    color: @ayuiTextColorGray;
+}
+.ayui-form-preview__btn_primary {
+    color: @form-preview-button-primary-color;
+}

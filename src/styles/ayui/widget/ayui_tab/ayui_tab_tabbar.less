@@ -1,0 +1,56 @@
+@import "../../base/fn";
+
+.ayui-tabbar {
+    display: flex;
+    position: absolute;
+    z-index: 500;
+    bottom: 0;
+    width: 100%;
+    background-color: #F7F7FA;
+
+    &:before {
+        .setTopLine(#C0BFC4);
+    }
+}
+
+.ayui-tabbar__item {
+    display: block;
+    flex: 1;
+    padding: 5px 0 0;
+    font-size: 0;
+    color: @ayuiTextColorGray;
+    text-align: center;
+    .setTapColor();
+
+    &.ayui-bar__item_on {
+        .ayui-tabbar__icon,
+        .ayui-tabbar__icon > i,
+        .ayui-tabbar__label {
+            color: @tabbar-text-active-color;
+        }
+    }
+}
+
+.ayui-tabbar__icon {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+
+    i&,
+    > i {
+        font-size: 24px;
+        color: @ayuiTextColorGray;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.ayui-tabbar__label {
+    text-align: center;
+    color: @ayuiTextColorGray;
+    font-size: 10px;
+    line-height: 1.8;
+}

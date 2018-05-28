@@ -1,0 +1,26 @@
+@import "../../../base/fn";
+
+@radio-checked-icon-color:#FF5523;
+
+// method2 accessbility
+.ayui-cells_radio {
+  .ayui-cell__ft {
+    padding-left: @ayuiCellInnerGapH;
+  }
+}
+
+.ayui-check {
+  // radio
+  .ayui-cells_radio & {
+    &:checked {
+      & + .ayui-icon-checked {
+        &:before {
+          display: block;
+          content: '\e664';
+          color: @radio-checked-icon-color;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

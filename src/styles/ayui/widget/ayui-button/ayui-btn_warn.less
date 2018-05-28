@@ -1,0 +1,12 @@
+@import "../../base/fn";
+
+.ayui-btn_warn {
+    background-color: @ayuiBtnWarnBg;
+    &:not(.ayui-btn_disabled):visited {
+        color: @ayuiBtnFontColor;
+    }
+    &:not(.ayui-btn_disabled):active {
+        color: @ayuiBtnActiveFontColor;
+        background-color: @ayuiBtnWarnActiveBg;
+    }
+}

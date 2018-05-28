@@ -1,0 +1,62 @@
+@import "../../base/fn";
+@import "ayui-btn_global";
+@import "ayui-btn_default";
+@import "ayui-btn_primary";
+@import "ayui-btn_warn";
+@import "ayui-btn_disabled";
+@import "ayui-btn_loading";
+@import "ayui-btn_plain";
+
+button, input {
+  &.ayui-btn {
+    width: 60%;
+    border-width: 0;
+    outline: 0;
+    border-radius: 40px;
+    -webkit-appearance: none;
+    &:focus {
+      outline: 0;
+    }
+  }
+  &.ayui-btn_inline, &.ayui-btn_mini {
+    width: auto;
+  }
+  &.ayui-btn_plain-primary, &.ayui-btn_plain-default {
+    border-width: 1px;
+    background-color: transparent;
+  }
+}
+
+.ayui-btn_mini {
+  display: inline-block;
+  padding: 0 1.32em;
+  line-height: @ayuiBtnMiniHeight;
+  font-size: @ayuiBtnMiniFontSize;
+}
+
+/*gap between btn*/
+.ayui-btn + .ayui-btn {
+  margin-top: @ayuiBtnDefaultGap;
+}
+
+.ayui-btn.ayui-btn_inline + .ayui-btn.ayui-btn_inline {
+  margin-top: auto;
+  margin-left: @ayuiBtnDefaultGap;
+}
+
+.ayui-btn-area {
+  margin: @ayuiCellsMarginTop @ayuiBtnDefaultGap .3em;
+}
+
+.ayui-btn-area_inline {
+  display: flex;
+  .ayui-btn {
+    margin-top: auto;
+    margin-right: @ayuiBtnDefaultGap;
+    width: 100%;
+    flex: 1;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

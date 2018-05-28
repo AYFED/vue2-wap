@@ -1,0 +1,48 @@
+@import "../../base/fn";
+
+@ayuiFontSizeDefault:13px;
+
+.ayui-cell_access {
+    .setTapColor();
+    color: inherit;
+    &:active {
+        background-color: #ECECEC;
+    }
+    .ayui-cell__ft {
+        font-size: @ayuiFontSizeDefault;
+        padding-right: 13px;
+        position: relative;
+        &:after {
+            content: " ";
+            .setArrow(right, @cell-default-arrow-width, @cell-default-arrow-color, @cell-default-arrow-border-width);
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            right: 2px;
+        }
+    }
+}
+.ayui-cell_link{
+    color: @ayuiLinkColorDefault;
+    font-size: 14px;
+
+    // 由于ayui-cell:first-child的:before为隐藏，所以这里要重新显示出来
+    &:first-child{
+        &:before{
+            display: block;
+        }
+    }
+}
+
+.ayui-cell_access.ayui-cell-box {
+    padding-right: 13px;
+    position: relative;
+    &:after {
+        content: " ";
+        .setArrow(right, @cell-default-arrow-width, @cell-default-arrow-color, @cell-default-arrow-border-width);
+        position: absolute;
+        top: 50%;
+        margin-top: -4px;
+        right: 17px;
+    }
+}

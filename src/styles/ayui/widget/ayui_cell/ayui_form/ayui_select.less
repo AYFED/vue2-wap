@@ -1,0 +1,69 @@
+@import "../../../base/fn";
+
+.ayui-cell_select {
+    padding: 0;
+    .ayui-select {
+        padding-right: 30px;
+    }
+    .ayui-cell__bd{
+        &:after{
+            content: " ";
+            .setArrow(right, 6px, #C8C8CD, 2px);
+
+            position: absolute;
+            top: 50%;
+            right: @ayuiCellGapH;
+            margin-top: -4px;
+        }
+    }
+}
+
+.ayui-select {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: inherit;
+    height: @ayuiCellHeight;
+    line-height: @ayuiCellHeight;
+    position: relative;
+    z-index: 1;
+    padding-left: @ayuiCellGapH;
+}
+
+.ayui-cell_select-before {
+    padding-right:@ayuiCellGapH;
+    .ayui-select{
+        width:@ayuiCellLabelWidth;
+        box-sizing: border-box;
+    }
+    .ayui-cell__hd {
+        position:relative;
+        &:after {
+            .setRightLine(@ayuiCellBorderColor);
+        }
+        &:before{
+            content: " ";
+            .setArrow(right, 6px, #C8C8CD, 2px);
+
+            position: absolute;
+            top: 50%;
+            right: @ayuiCellGapH;
+            margin-top: -4px;
+        }
+    }
+    .ayui-cell__bd {
+        padding-left:@ayuiCellGapH;
+        &:after{
+            display:none;
+        }
+    }
+}
+
+.ayui-cell_select-after {
+    padding-left:@ayuiCellGapH;
+    .ayui-select {
+        padding-left:0;
+    }
+}

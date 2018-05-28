@@ -1,0 +1,8 @@
+.ayui-modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+.ayui-modal-open-for-container {
+  overflow: hidden!important;
+}

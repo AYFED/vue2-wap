@@ -1,0 +1,10 @@
+{
+  "en": {
+    "cancel": "cancel",
+    "submit": "OK"
+  },
+  "zh-CN:": {
+    "cancel": "取消",
+    "submit": "确定"
+  }
+}

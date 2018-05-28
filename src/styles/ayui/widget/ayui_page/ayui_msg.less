@@ -1,0 +1,45 @@
+@import "../../base/fn";
+@import "../ayui-button/ayui-button";
+
+.ayui-msg {
+    padding-top: @ayuiMsgPaddingTop;
+    text-align: center;
+}
+.ayui-msg__icon-area {
+    margin-bottom: @ayuiMsgIconGap;
+}
+.ayui-msg__text-area {
+    margin-bottom: @ayuiMsgTextGap;
+    padding:0 20px;
+}
+.ayui-msg__text-area a{
+    color:@ayuiLinkColorDefault;
+}
+.ayui-msg__title {
+    margin-bottom: @ayuiMsgTitleGap;
+    font-weight: 400;
+    font-size: 20px;
+}
+.ayui-msg__desc {
+    font-size: 14px;
+    color: @ayuiTextColorGray;
+}
+.ayui-msg__opr-area {
+    margin-bottom: @ayuiMsgOprGap;
+}
+.ayui-msg__extra-area {
+    margin-bottom: @ayuiMsgExtraAreaGap;
+    font-size: 14px;
+    color: @ayuiTextColorGray;
+    a{color: @ayuiLinkColorDefault;}
+}
+
+@media screen and (min-height: @ayuiMsgExtraAreaOfMinHeight) {
+    .ayui-msg__extra-area {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
