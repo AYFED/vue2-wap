@@ -1,6 +1,6 @@
 {
   "name": "vue-ayui",
-  "version": "2.1.0",
+  "version": "2.5.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,6 +16,7 @@
     "array-shuffle": "^1.0.1",
     "autosize": "^4.0.2",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "big.js": "^5.0.3",
     "blueimp-md5": "^2.10.0",
     "countup.js": "^1.9.3",
@@ -57,7 +58,8 @@
     "pug": "^2.0.3",
     "pug-filters": "^3.1.0",
     "pug-loader": "^2.4.0",
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "yaml-loader": "^0.5.0"
   },
   "babel": {
     "presets": [
