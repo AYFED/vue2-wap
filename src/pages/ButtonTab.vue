@@ -54,7 +54,7 @@
 <style lang="less">
 
     .ayui-reddot-s:after {
-        background-color: #31a5f7 !important;
+        background-color: #fff !important;
     }
 
 </style>

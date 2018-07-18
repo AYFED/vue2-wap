@@ -15,7 +15,7 @@
 
             <!-- drawer content -->
             <div slot="drawer">
-                <group title="AYUI 组件库(2.0)" style="margin-top:20px;">
+                <group title="AYUI 组件库(2.5)" style="margin-top:20px;">
                     <cell title="组件实例" link="/demo" value="演示" @click.native="drawerVisibility = false">
                     </cell>
                     <cell title="支持关注" link="project/donate" @click.native="drawerVisibility = false">
