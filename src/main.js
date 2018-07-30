@@ -3,26 +3,9 @@ import Vuex from 'vuex';
 import VuexI18n from 'vuex-i18n';
 import App from './App.vue';
 import router from './router';
-import {sync} from 'vuex-router-sync';
-
-Vue.config.productionTip = false;
-Vue.use(Vuex);
-
-require('es6-promise').polyfill();
-
-const store = new Vuex.Store({
-  modules: {
-    i18n: VuexI18n.store,
-  },
-});
-
-Vue.use(VuexI18n.plugin, store);
+import { sync } from 'vuex-router-sync';
 
 import finalLocales from './i18n';
-
-for (let i in finalLocales) {
-  Vue.i18n.add(i, finalLocales[i]);
-}
 
 import DatetimePlugin from './plugins/datetime/index.js';
 import CloseDialogsPlugin from './plugins/close-dialogs/index.js';
@@ -37,6 +20,23 @@ import LoadingPlugin from './plugins/loading/index.js';
 import WechatPlugin from './plugins/wechat/index.js';
 import AjaxPlugin from './plugins/ajax/index.js';
 import AppPlugin from './plugins/app/index.js';
+
+Vue.config.productionTip = false;
+Vue.use(Vuex);
+
+require('es6-promise').polyfill();
+
+const store = new Vuex.Store({
+  modules: {
+    i18n: VuexI18n.store,
+  },
+});
+
+Vue.use(VuexI18n.plugin, store);
+
+for (const i in finalLocales) {
+  Vue.i18n.add(i, finalLocales[i]);
+}
 
 Vue.use(LocalePlugin);
 
@@ -76,16 +76,16 @@ store.registerModule('ayui', {
     },
   },
   actions: {
-    updateDemoPosition({commit}, top) {
-      commit({type: 'updateDemoPosition', top: top});
+    updateDemoPosition({ commit }, top) {
+      commit({ type: 'updateDemoPosition', top });
     },
   },
 });
 
 // global ayui config
 Vue.use(ConfigPlugin, {
-  $layout: 'VIEW_BOX'
-})
+  $layout: 'VIEW_BOX',
+});
 
 // plugins
 Vue.use(DevicePlugin);
@@ -100,32 +100,29 @@ Vue.use(DatetimePlugin);
 
 // test
 if (process.env.platform === 'app') {
-  Vue.use(AppPlugin, store)
+  Vue.use(AppPlugin, store);
 }
 
 const FastClick = require('fastclick');
 FastClick.attach(document.body);
 
 // 请求拦截器
-Vue.http.interceptors.request.use(function(config) {
+Vue.http.interceptors.request.use((config) => {
   // 所有请求之前都要执行的操作
   console.log('请求拦截器');
   return config;
-}, function(error) {
+}, error =>
   // 错误处理
-  return Promise.reject(error);
-});
+  Promise.reject(error));
 
 // 响应拦截器
-Vue.http.interceptors.response.use(function(response) {
+Vue.http.interceptors.response.use((response) => {
   // 所有请求完成后都要执行的操作
   console.log('响应拦截器');
-
   return response;
-}, function(error) {
+}, error =>
   // 错误处理
-  return Promise.reject(error);
-});
+  Promise.reject(error));
 
 Vue.use(CloseDialogsPlugin, router);
 
@@ -137,22 +134,22 @@ let historyCount = history.getItem('count') * 1 || 0;
 history.setItem('/', 0);
 let isPush = false;
 let endTime = Date.now();
-let methods = ['push', 'go', 'replace', 'forward', 'back'];
+const methods = ['push', 'go', 'replace', 'forward', 'back'];
 
 document.addEventListener('touchend', () => {
   endTime = Date.now();
 });
 
-methods.forEach(key => {
-  let method = router[key].bind(router);
-  router[key] = function(...args) {
+methods.forEach((key) => {
+  const method = router[key].bind(router);
+  router[key] = function (...args) {
     isPush = true;
-    method.apply(null, args);
+    method(...args);
   };
 });
 
-router.beforeEach(function(to, from, next) {
-  store.commit('updateLoadingStatus', {isLoading: true});
+router.beforeEach((to, from, next) => {
+  store.commit('updateLoadingStatus', { isLoading: true });
 
   const toIndex = history.getItem(to.path);
   const fromIndex = history.getItem(from.path);
@@ -160,34 +157,34 @@ router.beforeEach(function(to, from, next) {
   if (toIndex) {
     if (!fromIndex || parseInt(toIndex, 10) > parseInt(fromIndex, 10) ||
         (toIndex === '0' && fromIndex === '0')) {
-      store.commit('updateDirection', {direction: 'forward'});
+      store.commit('updateDirection', { direction: 'forward' });
     } else {
       // 判断是否是ios左滑返回
       if (!isPush && (Date.now() - endTime) < 377) {
-        store.commit('updateDirection', {direction: ''});
+        store.commit('updateDirection', { direction: '' });
       } else {
-        store.commit('updateDirection', {direction: 'reverse'});
+        store.commit('updateDirection', { direction: 'reverse' });
       }
     }
   } else {
     ++historyCount;
     history.setItem('count', historyCount);
     to.path !== '/' && history.setItem(to.path, historyCount);
-    store.commit('updateDirection', {direction: 'forward'});
+    store.commit('updateDirection', { direction: 'forward' });
   }
 
   if (/\/http/.test(to.path)) {
-    let url = to.path.split('http')[1];
+    const url = to.path.split('http')[1];
     window.location.href = `http${url}`;
   } else {
     next();
   }
 });
 
-router.afterEach(function(to) {
+router.afterEach((to) => {
   isPush = false;
   setTimeout(() => {
-    store.commit('updateLoadingStatus', {isLoading: false});
+    store.commit('updateLoadingStatus', { isLoading: false });
   }, 1000);
 });
 

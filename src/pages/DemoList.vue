@@ -1,6 +1,28 @@
 <template>
   <div class="demo-list-box" id="demo_list_box" :style="{height: `${height}px`}">
+    <h4 style="margin: 10px;">弹窗提示</h4>
     <flexbox :gutter="0" v-for="(list, index) in components" :key="index">
+      <flexbox-item :span="1/3" v-for="component in list" :key="component.name" class="cbox ayui-1px-t ayui-tap-active"
+                    @click.native="go(component.name.toLowerCase())">
+        <div class="ayui-1px-r cbox-inner">
+          <span class="ayui-iconfont" v-html="component.icon" :style="{color: component.color}"></span>
+          <br>
+          <span :style="[{fontSize: component.name.length > 12 ? '12px' : ''},{color: component.color}]">{{component.name | camelCase}}</span>
+        </div>
+      </flexbox-item>
+    </flexbox>
+    <h4 style="margin: 10px;">数据展示</h4>
+    <flexbox :gutter="0" v-for="(list, index) in components2" :key="index">
+      <flexbox-item :span="1/3" v-for="component in list" :key="component.name" class="cbox ayui-1px-t ayui-tap-active"
+                    @click.native="go(component.name.toLowerCase())">
+        <div class="ayui-1px-r cbox-inner">
+          <span class="ayui-iconfont" v-html="component.icon" :style="{color: component.color}"></span>
+          <br>
+          <span :style="[{fontSize: component.name.length > 12 ? '12px' : ''},{color: component.color}]">{{component.name | camelCase}}</span>
+        </div>
+      </flexbox-item>
+    </flexbox>
+    <flexbox :gutter="0" v-for="(list, index) in components3" :key="index">
       <flexbox-item :span="1/3" v-for="component in list" :key="component.name" class="cbox ayui-1px-t ayui-tap-active"
                     @click.native="go(component.name.toLowerCase())">
         <div class="ayui-1px-r cbox-inner">
@@ -16,6 +38,8 @@
 <script>
   import {Flexbox, FlexboxItem} from '@/components'
   import ComponentListData from '@/datas/component_list.json'
+  import ComponentListData2 from '@/datas/component_list1.json'
+  import ComponentListData3 from '@/datas/component_list2.json'
   import {mapState} from 'vuex'
 
   export default {
@@ -67,7 +91,9 @@
     data() {
       return {
         height: window.innerHeight - 46 - 53,
-        components: this.split(ComponentListData)
+        components: this.split(ComponentListData),
+        components2: this.split(ComponentListData2),
+        components3: this.split(ComponentListData3)
       }
     },
     computed: {
