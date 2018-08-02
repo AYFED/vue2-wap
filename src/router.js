@@ -523,6 +523,6 @@ export default new Router({
       path: '/component/v-chart/prevent_render',
       name: 'prevent_render',
       component: PreventRender
-    },
+    }
   ]
 })

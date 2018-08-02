@@ -367,6 +367,7 @@ export default {
         }
       } else {
         this.currentValue = _currentValue
+        this.$emit('on-select-single-date', this.currentValue)
       }
 
       if (this.multi) {

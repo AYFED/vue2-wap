@@ -1,5 +1,8 @@
 <template>
   <div class="ayui-grids">
+    :class="{
+      'ayui-grid-no-lr-borders': !showLrBorders
+    }">
     <slot></slot>
   </div>
 </template>
@@ -10,21 +13,28 @@ export default {
   methods: {
     countColumn () {
       this.childrenSize = this.$children.length
+      this.$children.forEach((c, index) => (c.index = index))
     }
   },
   props: {
     rows: {
       type: Number,
       validator () {
-        /* istanbul ignore if */
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('[ayui warn] Grid rows 属性已经废弃，使用 cols 代替。单行列数为自动计算')
-        }
+        
+        
         return true
       }
     },
     cols: {
       type: Number
+    },
+    showLrBorders: {
+      type: Boolean,
+      default: true
+    },
+    showVerticalDividers: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -41,4 +51,9 @@ export default {
 </script>
 <style lang="less">
 @import '../../styles/ayui/widget/ayui-grid/ayui-grid.less';
+.ayui-grids.ayui-grid-no-lr-borders {
+  &:after {
+    display: none;
+  }
+}
 </style>

@@ -1,15 +1,13 @@
 /**
  * Module dependencies.
  */
-
-var events = require('./event')
-var delegate = require('./delegate')
+import { Event as events } from './event';
+import {Delegate as delegate } from './delegate';
 
 /**
- * Expose `Events`.
+ * Expose `Events`.s
  */
 
-// module.exports = Events
 
 /**
  * Initialize an `Events` with the given
@@ -21,7 +19,7 @@ var delegate = require('./delegate')
  * @api public
  */
 
-export default function Events (el, obj) {
+function Events (el, obj) {
   if (!(this instanceof Events)) return new Events(el, obj)
   if (!el) throw new Error('element required')
   if (!obj) throw new Error('object required')
@@ -173,3 +171,5 @@ function parse (event) {
     selector: parts.join(' ')
   }
 }
+
+export default Events

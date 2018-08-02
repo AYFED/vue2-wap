@@ -47,10 +47,6 @@ export default {
       type: Boolean,
       default: true,
       validator (val) {
-        /* istanbul ignore if */
-        if (process.env.NODE_ENV === 'development' && val === false) {
-          console.warn('[ayui warn] x-dialog:scroll 已经废弃。如果你是 100% 布局，请参照文档配置 $layout 以实现阻止滚动')
-        }
         return true
       }
     }
@@ -111,7 +107,7 @@ export default {
 @import '../../styles/transition.less';
 @import '../../styles/ayui/widget/ayui_tips/ayui_mask';
 @import '../../styles/ayui/widget/ayui_tips/ayui_dialog';
-@import '../../styles/ayui-modal.css';
+@import '../../styles/ayui-modal';
 
 .ayui-x-dialog-absolute .ayui-dialog {
   position: absolute

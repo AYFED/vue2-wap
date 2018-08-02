@@ -49,15 +49,6 @@
   </div>
 </template>
 
-<i18n>
-cancel_text:
-  en: cancel
-  zh-CN: 取消
-confirm_text:
-  en: ok
-  zh-CN: 完成
-</i18n>
-
 <script>
 import Picker from '../picker'
 import Cell from '../cell'
@@ -141,20 +132,21 @@ export default {
     },
     columnWidth: Array,
     popupStyle: Object,
-    popupTitle: String
+    popupTitle: String,
+    disabled: Boolean
   },
   computed: {
     labelStyles () {
       return {
         display: 'block',
-        width: this.$parent.labelWidth || this.$parent.$parent.labelWidth || 'auto',
-        textAlign: this.$parent.labelAlign || this.$parent.$parent.labelAlign,
-        marginRight: this.$parent.labelMarginRight || this.$parent.$parent.labelMarginRight
+        width: (this.$parent && (this.$parent.labelWidth || this.$parent.$parent.labelWidth)) || 'auto',
+        textAlign: this.$parent && (this.$parent.labelAlign || this.$parent.$parent.labelAlign),
+        marginRight: this.$parent && (this.$parent.labelMarginRight || this.$parent.$parent.labelMarginRight)
       }
     },
     labelClass () {
       return {
-        'ayui-cell-justify': this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify'
+        'ayui-cell-justify': this.$parent && (this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify')
       }
     }
   },
@@ -164,7 +156,9 @@ export default {
       return value2name(this.currentValue, this.data)
     },
     onClick () {
-      this.showValue = true
+      if (!this.disabled) {
+        this.showValue = true
+      }
     },
     onHide (type) {
       this.showValue = false

@@ -66,7 +66,7 @@ export default {
   },
   mounted () {
     this.$nextTick(function () {
-      this.drawerWidth = parseInt(this.$refs.drawer.style.width.slice(0,-2)) || this.$refs.drawer.clientWidth
+      this.drawerWidth = this.$refs.drawer.clientWidth
     })
   }
 }

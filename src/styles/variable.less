@@ -34,6 +34,10 @@
 */
 @dialog-button-text-primary-color: #FF5523;
 @dialog-button-text-default-color: #353535;
+@dialog-button-text-warn-color: #E64340;
+@dialog-width: 80%; // also affects alert confirm
+@dialog-max-width: 300px; // also affects alert confirm
+@dialog-gap-width: 1.6em; // alias @weuiDialogGapWidth
 
 /**
 * x-number
@@ -105,11 +109,12 @@
 @switch-checked-bg-color: @theme-color;
 @switch-checked-border-color: @theme-color;
 @switch-disabled-opacity: 0.6;
+@switch-height: 32px;
 
 /**
 * Button
 */
-@button-global-border-radius: 40px;
+@button-global-border-radius: 5px;
 @button-global-font-color: #FFFFFF;
 @button-global-margin-top: 15px;
 @button-global-height: 42px;
@@ -117,6 +122,8 @@
 @button-global-active-font-color: rgba(255,255,255,.6);
 @button-global-font-size: 18px;
 
+@button-mini-font-size: 13px;
+@button-mini-line-height: 2.3;
 @button-warn-bg-color: #E64340;
 @button-warn-active-color: #CE3C39;
 @button-warn-disabled-bg-color: #EC8B89;
@@ -131,6 +138,18 @@
 @button-primary-bg-color: #FF5523;
 @button-primary-active-bg-color: #E54C1F;
 @button-primary-disabled-bg-color: #CCCCCC;
+@button-plain-primary-color: rgba(26,173,25,1);
+@button-plain-primary-border-color: rgba(26,173,25,1);
+@button-plain-primary-active-color: rgba(26,173,25,.6);
+@button-plain-primary-active-border-color: rgba(26,173,25,.6);
+@button-plain-default-color: rgba(53,53,53,1);
+@button-plain-default-border-color: rgba(53,53,53,1);
+@button-plain-default-active-color: rgba(53,53,53,.6);
+@button-plain-default-active-border-color: rgba(53,53,53,.6);
+@button-plain-warn-color: rgba(206,60,57,1);
+@button-plain-warn-border-color: rgba(206,60,57,1);
+@button-plain-warn-active-color: rgba(206,60,57,.6);
+@button-plain-warn-active-border-color: rgba(206,60,57,.6);
 
 /**
 * swipeout
@@ -235,6 +254,8 @@
 */
 @group-title-margin-top: .77em;
 @group-title-margin-bottom: .3em;
+@group-footer-title-margin-top: .3em;
+@group-footer-title-margin-bottom: .77em;
 
 /**
 * toast
@@ -292,3 +313,4 @@
 * loadmore
 */
 @load-more-tip-background-color: #fff;
+@loading-z-index: 5001;

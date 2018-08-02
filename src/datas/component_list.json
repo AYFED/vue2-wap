@@ -50,5 +50,297 @@
   {
     "name": "x-dialog",
     "icon": "&#xe6c7;"
+  },
+  {
+    "name": "badge",
+    "icon": "&#xe6a8;",
+    "color": "#f74c31"
+  },
+  {
+    "name": "card",
+    "icon": "&#xe675;"
+  },
+  {
+    "name": "countup",
+    "icon": "&#xe6bf;"
+  },
+  {
+    "name": "flow",
+    "icon": "&#xe6b5;",
+    "items": [
+      "flow",
+      "flow-state",
+      "flow-line"
+    ]
+  },
+  {
+    "name": "marquee",
+    "icon": "&#xe69f;",
+    "items": [
+      "marquee",
+      "marquee-item"
+    ]
+  },
+  {
+    "name": "panel",
+    "icon": "&#xe6c9;"
+  },
+  {
+    "name": "previewer",
+    "icon": "&#xe6c2;"
+  },
+  {
+    "name": "qrcode",
+    "icon": "&#xe695;"
+  },
+  {
+    "name": "step",
+    "icon": "&#xe705;",
+    "items": [
+      "step",
+      "step-item"
+    ]
+  },
+  {
+    "name": "swiper",
+    "icon": "&#xe6e4;"
+  },
+  {
+    "name": "x-table",
+    "icon": "&#xe6c9;"
+  },
+  {
+    "name": "x-progress",
+    "icon": "&#xe6d1;"
+  },
+  {
+    "name": "x-img",
+    "icon": "&#xe6ca;"
+  },
+  {
+    "name": "calendar",
+    "icon": "&#xe6dd;"
+  },
+  {
+    "name": "cell-box",
+    "icon": "&#xe75e;"
+  },
+  {
+    "name": "cell-form-preview",
+    "icon": "&#xe753;"
+  },
+  {
+    "name": "cell",
+    "icon": "&#xe74e;"
+  },
+  {
+    "name": "check-icon",
+    "icon": "&#xe653;"
+  },
+  {
+    "name": "checker",
+    "icon": "&#xe675;",
+    "items": [
+      "checker",
+      "checker-item"
+    ]
+  },
+  {
+    "name": "checklist",
+    "icon": "&#xe6fc;"
+  },
+  {
+    "name": "datetime-view",
+    "icon": "&#xe69b;"
+  },
+  {
+    "name": "datetime-range",
+    "icon": "&#xe6b3;"
+  },
+  {
+    "name": "datetime",
+    "icon": "&#xe6bb;"
+  },
+  {
+    "name": "form-preview",
+    "icon": "&#xe6f5;"
+  },
+  {
+    "name": "group",
+    "icon": "&#xe83b;"
+  },
+  {
+    "name": "inline-x-switch",
+    "icon": "&#xe661;"
+  },
+  {
+    "name": "inline-x-number",
+    "icon": "&#xe726;"
+  },
+  {
+    "name": "inline-calendar",
+    "icon": "&#xe67e;"
+  },
+  {
+    "name": "popup-picker",
+    "icon": "&#xe6d0;"
+  },
+  {
+    "name": "popup-radio",
+    "icon": "&#xe6cc;"
+  },
+  {
+    "name": "picker",
+    "icon": "&#xe6c5;"
+  },
+  {
+    "name": "radio",
+    "icon": "&#xe68c;"
+  },
+  {
+    "name": "range",
+    "icon": "&#xe68a;"
+  },
+  {
+    "name": "selector",
+    "icon": "&#xe677;"
+  },
+  {
+    "name": "swipeout",
+    "icon": "&#xe6e3;",
+    "items": [
+      "swipeout",
+      "swipeout-item",
+      "swipeout-button"
+    ]
+  },
+  {
+    "name": "search",
+    "icon": "&#xe6ac;"
+  },
+  {
+    "name": "x-switch",
+    "icon": "&#xe661;"
+  },
+  {
+    "name": "x-input",
+    "icon": "&#xe692;"
+  },
+  {
+    "name": "x-number",
+    "icon": "&#xe6e5;"
+  },
+  {
+    "name": "x-textarea",
+    "icon": "&#xe6ec;"
+  },
+  {
+    "name": "x-address",
+    "icon": "&#xe6a9;"
+  },
+  {
+    "name": "x-icon",
+    "icon": "&#xe6cf;"
+  },
+  {
+    "name": "x-button",
+    "icon": "&#xe6a2;"
+  },
+  {
+    "name": "divider",
+    "icon": "&#xe6cb;"
+  },
+  {
+    "name": "flexbox",
+    "icon": "&#xe6bf;",
+    "items": [
+      "flexbox",
+      "flexbox-item"
+    ]
+  },
+  {
+    "name": "grid",
+    "icon": "&#xe724;",
+    "items": [
+      "grid",
+      "grid-item"
+    ]
+  },
+  {
+    "name": "sticky",
+    "icon": "&#xe724;"
+  },
+  {
+    "name": "view-box",
+    "icon": "&#xe6fc;"
+  },
+  {
+    "name": "button-tab",
+    "icon": "&#xe6ee;",
+    "items": [
+      "button-tab",
+      "button-tab-item"
+    ]
+  },
+  {
+    "name": "drawer",
+    "icon": "&#xe6db;"
+  },
+  {
+    "name": "tab",
+    "icon": "&#xe6e0;",
+    "items": [
+      "tab",
+      "tab-item"
+    ]
+  },
+  {
+    "name": "tabbar",
+    "icon": "&#xe6ee;",
+    "items": [
+      "tabbar",
+      "tabbar-item"
+    ]
+  },
+  {
+    "name": "x-header",
+    "icon": "&#xe6c1;"
+  },
+  {
+    "name": "timeline",
+    "icon": "&#xe6bb;"
+  },
+  {
+    "name": "v-chart",
+    "icon": "&#xe6a8;"
+  },
+  {
+    "name": "x-circle",
+    "icon": "&#xe6a4;"
+  },
+  {
+    "name": "blur",
+    "icon": "&#xe75e;"
+  },
+  {
+    "name": "countdown",
+    "icon": "&#xe653;"
+  },
+  {
+    "name": "color-picker",
+    "icon": "&#xe6e6;",
+    "color": "#f2c400"
+  },
+  {
+    "name": "masker",
+    "icon": "&#xe69b;"
+  },
+  {
+    "name": "scroller",
+    "icon": "&#xe672;"
+  },
+  {
+    "name": "wechat-emotion",
+    "icon": "&#xe6ba;"
   }
 ]

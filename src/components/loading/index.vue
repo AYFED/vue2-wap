@@ -1,10 +1,10 @@
 <template>
   <transition :name="transition">
-    <div class="ayui-loading_toast ay-loading" v-show="show">
+    <div class="ayui-loading_toast ay-loading" :class="!text ? 'ayui-loading-no-text' : ''" v-show="show">
       <div class="ayui-mask_transparent"></div>
       <div class="ayui-toast" :style="{ position: position }">
         <i class="ayui-loading ayui-icon_toast"></i>
-        <p class="ayui-toast__content">{{ $t(text) || $t('loading') }}<slot></slot></p>
+        <p class="ayui-toast__content" v-if="text">{{ $t(text) || $t('loading') }}<slot></slot></p>
       </div>
     </div>
   </transition>
@@ -39,7 +39,7 @@ export default {
 @import '../../styles/ayui/widget/ayui_tips/ayui_toast';
 @import '../../styles/ayui/widget/ayui-loading/ayui-loading.less';
 
-.ay-loading .ayui-toast {
+.ayui-loading .ayui-toast {
   z-index: 5001;
 }
 .ayui-icon_toast.ayui-loading {
@@ -49,10 +49,19 @@ export default {
   vertical-align: baseline;
   display: inline-block;
 }
+.ayui-mask-enter, .ayui-mask-leave-active,
+.ayui-mask-leave-active, .ayui-mask-enter-active {
+  position: relative;
+  z-index: 1;
+}
 .ayui-mask-enter, .ayui-mask-leave-active {
   opacity: 0;
 }
 .ayui-mask-leave-active, .ayui-mask-enter-active {
   transition: opacity 300ms;
+}
+
+.ayui-loading-no-text .ayui-toast {
+  min-height: 98px;
 }
 </style>

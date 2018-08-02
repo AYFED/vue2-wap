@@ -1,34 +1,50 @@
 <template>
-    <div class="ay-actionsheet">
-        <transition name="ayui-actionsheet-mask">
-            <div class="ayui-mask ayui-mask_transparent" @click="onClickingMask" v-show="show"></div>
-        </transition>
-        <div class="ayui-skin_android" v-if="theme === 'android'">
-            <transition name="ayui-android-actionsheet">
-                <div class="ayui-actionsheet" v-show="show">
-                    <div class="ayui-actionsheet__menu">
-                        <div class="ayui-actionsheet__cell" :class="{'ayui-active':  menusNum==index}" v-for="(text, key, index) in menus" @click="
-              onMenuClick(text, key,index)" v-html="$t(text.label || text)">
-                        </div>
-                    </div>
-                </div>
-            </transition>
-        </div>
-        <div class="ayui-actionsheet" :class="{'ayui-actionsheet_toggle': show}" v-else>
-            <div class="ayui-actionsheet__menu">
-                <div class="ayui-actionsheet__cell" v-if="hasHeaderSlot">
-                    <slot name="header"></slot>
-                </div>
-                <div class="ayui-actionsheet__cell" v-for="(text, key, index) in menus" @click="onMenuClick(text, key, index)"
-                     v-html="$t(text.label || text)"
-                     :class="[`ayui-actionsheet-menu-${text.type || 'default'}`,{'ayui-active':isShowMenusNum ? menusIndexNum==index : false}]">
-                </div>
+  <div class="ay-actionsheet">
+    <transition name="ayui-actionsheet-mask">
+      <div class="ayui-mask ayui-mask_transparent"
+        @click="onClickingMask"
+        v-show="show"></div>
+    </transition>
+
+    <div class="ayui-skin_android"
+      v-if="theme === 'android'">
+      <transition name="ayui-android-actionsheet"
+        @after-enter="$emit('on-after-show')"
+        @after-leave="$emit('on-after-hide')">
+        <div class="ayui-actionsheet"
+          v-show="show">
+          <div class="ayui-actionsheet__menu">
+            <div class="ayui-actionsheet__cell"
+              v-for="(text, key) in menus"
+              @click="onMenuClick(text, key)"
+              v-html="$t(text.label || text)">
             </div>
-            <div class="ayui-actionsheet__action" @click="emitEvent('on-click-menu', 'cancel')" v-if="showCancel">
-                <div class="ayui-actionsheet__cell">{{cancelText || $t('cancel_text')}}</div>
-            </div>
+          </div>
         </div>
+      </transition>
     </div>
+    <div class="ayui-actionsheet"
+      :class="{'ayui-actionsheet_toggle': show}"
+      v-else
+      ref="iOSMenu">
+      <div class="ayui-actionsheet__menu">
+        <div class="ayui-actionsheet__cell" v-if="hasHeaderSlot">
+          <slot name="header"></slot>
+        </div>
+        <div class="ayui-actionsheet__cell"
+          v-for="(text, key, index) in menus"
+          @click="onMenuClick(text, key, index)"
+          v-html="$t(text.label || text)"
+          :class="[`ayui-actionsheet-menu-${text.type || 'default'}`,menusNumber == index ? 'ayui-actionsheet-menu-active':'']">
+        </div>
+      </div>
+      <div class="ayui-actionsheet__action"
+        @click="emitEvent('on-click-menu', 'cancel')"
+        v-if="showCancel">
+        <div class="ayui-actionsheet__cell">{{cancelText || $t('cancel')}}</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,6 +54,7 @@
       this.hasHeaderSlot = !!this.$slots.header;
       this.$nextTick(() => {
         this.$tabbar = document.querySelector('.ayui-tabbar');
+      this.$refs.iOSMenu && this.$refs.iOSMenu.addEventListener('transitionend', this.onTransitionEnd)
       });
     },
     props: {
@@ -59,85 +76,81 @@
       closeOnClickingMenu: {
         type: Boolean,
         default: true,
-      },
-      menusNum: {
-        type: Number,
-        default: 0,
-      },
-      isShowMenusNum:{
-        type: Boolean,
-        default: false,
       }
     },
     data() {
       return {
         hasHeaderSlot: false,
         show: false,
-        menusIndexNum:this.menusNum
+        menusNumber:-1
       };
     },
     methods: {
-      onMenuClick(text, key, index) {
-        if (typeof text === 'string') {
-          this.emitEvent('on-click-menu', key, text);
-          if (!/.noop/.test(key)) this.menusIndexNum = index;
-        } else {
-          if (text.type !== 'disabled' && text.type !== 'info') {
-            if (text.value || text.value === 0) {
-              this.emitEvent('on-click-menu', text.value, text);
-            } else {
-              this.emitEvent('on-click-menu', '', text);
-              this.show = false;
-            }
+    onTransitionEnd () {
+      this.$emit(this.show ? 'on-after-show' : 'on-after-hide')
+    },
+    onMenuClick (text, key, index) {
+      this.menusNumber = index
+      if (typeof text === 'string') {
+        this.emitEvent('on-click-menu', key, text)
+      } else {
+        if (text.type !== 'disabled' && text.type !== 'info') {
+          if (text.value || text.value === 0) {
+            this.emitEvent('on-click-menu', text.value, text)
+          } else {
+            this.emitEvent('on-click-menu', '', text)
+            this.show = false
           }
         }
-      },
-      onClickingMask() {
-        this.$emit('on-click-mask');
-        this.closeOnClickingMask && (this.show = false);
-      },
-      emitEvent(event, menu, item) {
-        if (event === 'on-click-menu' && !/.noop/.test(menu)) {
-          let _item = item;
-          if (typeof _item === 'object') {
-            _item = JSON.parse(JSON.stringify(_item));
-          }
-          this.$emit(event, menu, _item);
-          this.$emit(`${event}-${menu}`);
-          this.closeOnClickingMenu && (this.show = false);
-        }
-      },
-      fixIos(zIndex) {
-        if (this.$el.parentNode && this.$el.parentNode.className.indexOf('v-transfer-dom') !== -1) {
-          return;
-        }
-        if (this.$tabbar && /iphone/i.test(navigator.userAgent)) {
-          this.$tabbar.style.zIndex = zIndex;
-        }
-      },
+      }
     },
-    watch: {
-      show(val) {
-        this.$emit('input', val);
-        if (val) {
-          this.fixIos(-1);
-        } else {
-          setTimeout(() => {
-            this.fixIos(100);
-          }, 200);
+    onClickingMask () {
+      this.$emit('on-click-mask')
+      this.closeOnClickingMask && (this.show = false)
+    },
+    emitEvent (event, menu, item) {
+      if (event === 'on-click-menu' && !/.noop/.test(menu)) {
+        let _item = item
+        if (typeof _item === 'object') {
+          _item = JSON.parse(JSON.stringify(_item))
         }
-      },
-      value: {
-        handler: function(val) {
-          this.show = val;
-        },
-        immediate: true,
-      },
+        this.$emit(event, menu, _item)
+        this.$emit(`${event}-${menu}`)
+        this.closeOnClickingMenu && (this.show = false)
+      }
     },
-    beforeDestroy() {
-      this.fixIos(100);
+    fixIos (zIndex) {
+      if (this.$el.parentNode && this.$el.parentNode.className.indexOf('v-transfer-dom') !== -1) {
+        return
+      }
+      if (this.$tabbar && /iphone/i.test(navigator.userAgent)) {
+        this.$tabbar.style.zIndex = zIndex
+      }
+    }
+  },
+  watch: {
+    show (val) {
+      this.$emit('input', val)
+      if (val) {
+        this.fixIos(-1)
+      } else {
+        setTimeout(() => {
+          this.fixIos(100)
+        }, 200)
+      }
     },
-  };
+    value: {
+      handler: function (val) {
+        this.show = val
+      },
+      immediate: true
+    }
+  },
+  beforeDestroy () {
+    this.fixIos(100)
+    this.$refs.iOSMenu && this.$refs.iOSMenu.removeEventListener('transitionend', this.onTransitionEnd)
+  }
+}
 </script>
 
 <style lang="less">
@@ -154,6 +167,10 @@
 
     .ayui-actionsheet-menu-default {
         color: @actionsheet-label-default-color;
+    }
+
+    .ayui-actionsheet-menu-active{
+      color: @actionsheet-label-primary-color;
     }
 
     .ayui-actionsheet-menu-disabled {

@@ -27,6 +27,7 @@ export default {
   left: 0;
   top: 0;
   width: 200%;
+  height: 1px;
   border-left: 1px solid @c;
   border-top: 1px solid @c;
   border-bottom: 1px solid @c;
@@ -34,6 +35,7 @@ export default {
   height: 200%;
   transform-origin: left top;
   transform: scale(0.5);
+  z-index: 1;
 }
 
 .setLineWithoutLeft(@c: #C7C7C7) {
@@ -42,6 +44,7 @@ export default {
   left: 0;
   top: 0;
   width: 200%;
+  height: 1px;
   border-right: 1px solid @c;
   border-top: 1px solid @c;
   border-bottom: 1px solid @c;
@@ -50,6 +53,7 @@ export default {
   height: 200%;
   transform-origin: left top;
   transform: scale(0.5);
+  z-index: 1;
 }
 
 .setLineMiddle(@c: #C7C7C7) {
@@ -58,6 +62,7 @@ export default {
   left: 0;
   top: 0;
   width: 200%;
+  height: 1px;
   border-right: 1px solid @c;
   border-top: 1px solid @c;
   border-bottom: 1px solid @c;
@@ -66,13 +71,13 @@ export default {
   height: 200%;
   transform-origin: left top;
   transform: scale(0.5);
+  z-index: 1;
 }
 
 .ayui-button-group {
   -webkit-touch-callout: none;
 
   & {
-    display: box;
     display: flex;
   }
 
@@ -136,5 +141,4 @@ export default {
     color: #aaa;
   }
 }
-
 </style>

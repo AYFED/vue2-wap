@@ -19,6 +19,13 @@
       <slot name="after-title"></slot>
       <slot></slot>
     </div>
+    <div
+    class="ayui-cells__title ayui-group-footer-title"
+    v-if="footerTitle"
+    :style="cleanStyle({
+      color: footerTitleColor
+    })"
+    v-html="footerTitle"></div>
   </div>
 </template>
 
@@ -36,7 +43,9 @@ export default {
     labelWidth: String,
     labelAlign: String,
     labelMarginRight: String,
-    gutter: [String, Number]
+    gutter: [String, Number],
+    footerTitle: String,
+    footerTitleColor: String
   }
 }
 </script>
@@ -48,6 +57,13 @@ export default {
 
 .ayui-no-group-title {
   margin-top: @group-title-margin-top;
+}
+
+.ayui-group-footer-title.ayui-cells__title {
+  margin-top: @group-footer-title-margin-top;
+  margin-bottom: @group-footer-title-margin-bottom;
+  padding-top: 0;
+  font-size: 12px;
 }
 
 /* global config for group items */

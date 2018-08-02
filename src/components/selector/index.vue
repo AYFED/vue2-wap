@@ -9,7 +9,7 @@
         width: $parent.labelWidth,
         textAlign: $parent.labelAlign,
         marginRight: $parent.labelMarginRight
-      })">{{ title }}</label>
+      })" v-html="title"></label>
     </div>
     <div class="ayui-cell__bd" v-if="!readonly">
       <select :id="`ayui-selector-${uuid}`" style="color:red;" class="ayui-select" v-model="currentValue" :name="name"
@@ -19,7 +19,7 @@
       })">
         <option :value="value === null ? 'null' : ''" v-if="showPlaceholder" :selected="isEmptyValue(value) && !!placeholder">{{ placeholder }}</option>
         <option disabled v-if="fixIos"></option>
-        <option :value="one.key" v-for="one in processOptions">{{ one.value }}</option>
+        <option :value="one.key" v-for="one in processOptions">{{ direction === 'rtl' ? one.value + '&#x200E;' : one.value  }}</option>
       </select>
     </div>
     <div class="ayui-cell__ft ayui-selector-readonly" v-else>
@@ -142,7 +142,7 @@ export default {
     name: String,
     placeholder: String,
     readonly: Boolean,
-    value: [Boolean, String, Number, Object],
+    value: [String, Number, Object, Boolean],
     valueMap: {
       type: Array,
       validator (val) {

@@ -63,7 +63,7 @@ export default {
     }
   }
 }
-.ayui-flex-col
+
 .ayui-flex-row {
   box-direction: row;
   box-orient: horizontal;

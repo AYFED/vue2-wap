@@ -1,4 +1,4 @@
-const indexof = function (arr, obj) {
+export function indexof (arr, obj) {
   if (arr.indexOf) return arr.indexOf(obj)
   for (let i = 0; i < arr.length; ++i) {
     if (arr[i] === obj) return i
@@ -6,7 +6,7 @@ const indexof = function (arr, obj) {
   return -1
 }
 
-const findClosest = function (target, points) {
+export function findClosest (target, points) {
   var diff = null
   var current = null
   var closest = points[0]
@@ -18,11 +18,10 @@ const findClosest = function (target, points) {
       closest = points[i]
     }
   }
-
   return closest
 }
 
-function getWidth (el) {
+export function getWidth (el) {
   let width = window.getComputedStyle(el, null)['width']
   if (width === '100%' || width === 'auto') {
     return 0
@@ -30,7 +29,7 @@ function getWidth (el) {
   return parseInt(width, 10)
 }
 
-const percentage = {
+export const percentage = {
   isNumber: function (num) {
     return typeof num === 'number'
   },
@@ -42,11 +41,4 @@ const percentage = {
   from: function (part, target) {
     if (percentage.isNumber(part) && percentage.isNumber(target)) return (part / target) * 100
   }
-}
-
-export {
-  indexof,
-  findClosest,
-  getWidth,
-  percentage
 }

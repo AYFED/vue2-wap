@@ -25,7 +25,7 @@ export default {
     return {
       type: '1',
       list: [{
-        src: 'http://somedomain.somdomain/x.jpg',
+        src: 'https://segmentfault.com/reco/1640000015774571?utm_source=ad_index',
         fallbackSrc: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
         title: '标题一',
         desc: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。',
@@ -46,7 +46,7 @@ export default {
       }],
       footer: {
         title: this.$t('more'),
-        url: 'http://ayui.li'
+        url: 'http://www.aoyou.com'
       }
     }
   }

@@ -1,13 +1,13 @@
 <template>
   <div
-    class="ay-tab-item"
-    :class="[currentSelected ? activeClass : '', {'ay-tab-selected': currentSelected, 'ay-tab-disabled': disabled}]"
+    class="ayui-tab-item"
+    :class="[currentSelected ? activeClass : '', {'ayui-tab-selected': currentSelected, 'ayui-tab-disabled': disabled}]"
     :style="style"
     @click="onItemClick">
     <slot></slot>
     <span
       :style="{background: badgeBackground, color: badgeColor}"
-      class="ay-tab-item-badge"
+      class="ayui-tab-item-badge"
       v-if="typeof badgeLabel !== 'undefined' && badgeLabel !== ''">
     {{ badgeLabel }}</span>
   </div>

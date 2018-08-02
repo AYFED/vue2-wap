@@ -58,22 +58,25 @@ export default {
         maxHTML: this.maxHTML,
         disable: this.disabled,
         disabledOpacity: this.disabledOpacity,
-        initialBarWidth: window.getComputedStyle(this.$el.parentNode).width.replace('px', '') - 80
+        initialBarWidth: window.getComputedStyle(this.$el.parentNode).width.replace('px', '') - 80,
+        onTouchstart (e) {
+          _this.$emit('on-touchstart', e)
+        },
+        onTouchend (e) {
+          _this.$emit('on-touchend', e)
+        }
       }
-
-      setTimeout(()=>{
-        if (this.step !== 0) {
-          options.step = this.step
-        }
-        this.range = new Powerange(this.$el.querySelector('.ayui-range-input'), options)
-        const handleTop = (this.rangeHandleHeight - this.rangeBarHeight) / 2
-        this.$el.querySelector('.range-handle').style.top = `-${handleTop}px`
-        this.$el.querySelector('.range-bar').style.height = `${this.rangeBarHeight}px`
-        this.handleOrientationchange = () => {
-          this.update()
-        }
-        window.addEventListener('orientationchange', this.handleOrientationchange, false)
-      },1000)
+      if (this.step !== 0) {
+        options.step = this.step
+      }
+      this.range = new Powerange(this.$el.querySelector('.ayui-range-input'), options)
+      const handleTop = (this.rangeHandleHeight - this.rangeBarHeight) / 2
+      this.$el.querySelector('.range-handle').style.top = `-${handleTop}px`
+      this.$el.querySelector('.range-bar').style.height = `${this.rangeBarHeight}px`
+      this.handleOrientationchange = () => {
+        this.update()
+      }
+      window.addEventListener('orientationchange', this.handleOrientationchange, false)
     })
   },
   methods: {

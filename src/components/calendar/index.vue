@@ -27,6 +27,7 @@
         <inline-calendar
         v-model="currentValue"
         @on-change="onCalendarValueChange"
+          @on-select-single-date="onSelectSingleDate"
         :render-month="renderMonth"
         :start-date="startDate"
         :end-date="endDate"
@@ -168,6 +169,11 @@ export default {
       if (!this.shouldConfirm) {
         this.show = false
         this.$emit('input', pure(val))
+      }
+    },
+    onSelectSingleDate () {
+      if (!this.shouldConfirm) {
+        this.show = false
       }
     }
   },

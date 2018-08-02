@@ -10,6 +10,16 @@ import Clocker from './clocker'
 
 let format = '%D 天 %H 小时 %M 分 %S 秒'
 
+if (typeof V_LOCALE === 'undefined') {
+  
+} else {
+  if (V_LOCALE === 'en') { // eslint-disable-line
+    format = '%D d %H h %M m %S s'
+  } else if (V_LOCALE === 'zh-CN') { // eslint-disable-line
+    format = '%D 天 %H 小时 %M 分 %S 秒'
+  }
+}
+
 export default {
   name: 'clocker',
   mounted () {
@@ -56,7 +66,7 @@ export default {
   },
   watch: {
     time () {
-      this.clocker.remove()
+      this.clocker && this.clocker.remove()
       this.render()
     }
   },

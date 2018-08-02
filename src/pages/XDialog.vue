@@ -1,6 +1,5 @@
 <template>
   <div style="height: 1000px">
-
     <group>
       <x-switch v-model="show" :title="$t('Toggle')"></x-switch>
       <x-switch v-model="show2" :title="$t('use .sync')"></x-switch>
@@ -59,7 +58,7 @@
           <span style="font-size:30px;">HELLO WORLD</span>
           <br>
           <br>
-          <x-icon type="ios-close-outline" style="fill:#fff;"></x-icon>
+          <span class="ayui-close"></span>
         </p>
       </x-dialog>
     </div>

@@ -55,10 +55,11 @@ export default {
       return [
         {
           'ayui-btn_disabled': this.disabled,
+          'ayui-btn_plain-disabled': this.plain && this.disabled,
           'ayui-btn_mini': this.mini,
           'ayui-x-button-no-border': this.noBorder
         },
-        `ayui-btn_${this.type}`,
+        !this.plain ? `ayui-btn_${this.type}` : '',
         this.plain ? `ayui-btn_plain-${this.type}` : '',
         this.showLoading ? `ayui-btn_loading` : ''
       ]

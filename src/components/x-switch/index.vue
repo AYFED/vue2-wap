@@ -94,6 +94,7 @@ export default {
 <style lang="less">
 @import '../../styles/ayui/widget/ayui_cell/ayui_form/ayui_form_common';
 @import '../../styles/ayui/widget/ayui_cell/ayui_switch';
+@import '../inline-x-switch/style.less';
 
 .ayui-cell_switch .ayui-cell__ft {
   font-size: 0;

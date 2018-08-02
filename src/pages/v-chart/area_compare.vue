@@ -43,7 +43,3 @@ export default {
   }
 }
 </script>
-
-<demo>
-title: 对比面积图：美国、苏联核储备对比
-</demo>

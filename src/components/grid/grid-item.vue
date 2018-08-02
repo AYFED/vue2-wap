@@ -1,7 +1,15 @@
 <template>
-  <a href="javascript:;" class="ayui-grid" @click="onClick" :style="style">
+  <a href="javascript:;"
+    class="ayui-grid"
+    :class="{
+      'ayui-grid-item-no-border': (isLast && !$parent.showLrBorders) || (!isLast && !$parent.showVerticalDividers),
+    }"
+    @click="onClick"
+    :style="style">
     <div class="ayui-grid__icon" v-if="hasIconSlot || icon">
-      <slot name="icon"><img :src="icon" alt=""></slot>
+      <slot name="icon">
+        <img :src="icon" alt="">
+      </slot>
     </div>
     <p v-if="hasLabelSlot || label" class="ayui-grid__label">
       <slot name="label">
@@ -29,6 +37,9 @@ export default {
     this.$parent.countColumn()
   },
   computed: {
+    isLast () {
+      return !((this.index + 1) % this.$parent.column)
+    },
     style () {
       const column = this.$parent.column
       if (!column || column === 3) {
@@ -47,9 +58,18 @@ export default {
   },
   data () {
     return {
+      index: 0,
       hasIconSlot: false,
       hasLabelSlot: false
     }
   }
 }
 </script>
+
+<style lang="less">
+.ayui-grid.ayui-grid-item-no-border {
+  &:before {
+    display: none;
+  }
+}
+</style>

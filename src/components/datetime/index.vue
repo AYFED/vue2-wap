@@ -45,10 +45,7 @@ export default {
       type: String,
       default: 'YYYY-MM-DD',
       validator (val) {
-        /* istanbul ignore if */
-        if (process.env.NODE_ENV === 'development' && val && /A/.test(val) && val !== 'YYYY-MM-DD A') {
-          return console.error('[ayui] Datetime prop:format 使用 A 时只允许的值为： YYYY-MM-DD A')
-        }
+      
         return true
       }
     },
@@ -100,9 +97,7 @@ export default {
       type: String,
       validator (val) {
         /* istanbul ignore if */
-        if (process.env.NODE_ENV === 'development' && val && val.length !== 10) {
-          console.error('[ayui] Datetime prop:start-date 必须为 YYYY-MM-DD 格式')
-        }
+        
         return val ? val.length === 10 : true
       }
     },
@@ -110,9 +105,7 @@ export default {
       type: String,
       validator (val) {
         /* istanbul ignore if */
-        if (process.env.NODE_ENV === 'development' && val && val.length !== 10) {
-          console.error('[ayui] Datetime prop:end-date 必须为 YYYY-MM-DD 格式')
-        }
+        
         return val ? val.length === 10 : true
       }
     },

@@ -4,15 +4,10 @@
             <loading v-model="isLoading"></loading>
         </div>
         <div v-transfer-dom>
-            <actionsheet :menus="menus" v-model="showMenu" :showCancel="false" :menusNum=1 :isShowMenusNum = true @on-click-menu="changeLocale"></actionsheet>
+            <actionsheet :menus="menus" v-model="showMenu" :showCancel="false" @on-click-menu="changeLocale"></actionsheet>
         </div>
-        <drawer v-show="!isLoading"
-                width="200px;"
-                :show.sync="drawerVisibility"
-                :show-mode="showModeValue"
-                :placement="showPlacementValue"
-                :drawer-style="{'background-color':'#fff', width: '200px',}">
-
+        <drawer v-show="!isLoading" width="200px;" :show.sync="drawerVisibility" :show-mode="showModeValue"
+                :placement="showPlacementValue" :drawer-style="{'background-color':'#fff', width: '200px'}">
             <!-- drawer content -->
             <div slot="drawer">
                 <group title="AYUI 组件库(2.5)" style="margin-top:20px;">
@@ -30,43 +25,35 @@
                     <radio v-model="showPlacement" :options="['left', 'right']" @on-change="onPlacementChange"></radio>
                 </group>
             </div>
-
             <!-- main content -->
-            <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
-                <x-header slot="header"
-                          style="width:100%;position:absolute;left:0;top:0;z-index:100;"
-                          :left-options="leftOptions"
-                          :right-options="rightOptions"
-                          :title="title"
-                          :transition="headerTransition"
-                          @on-click-more="onClickMore">
-          <span v-if="route.path === '/' || route.path === '/component/drawer'" slot="overwrite-left"
-                @click="drawerVisibility = !drawerVisibility">
-            <i class="ayui-iconfont ayui-icon-nav"></i>
-          </span>
+            <view-box ref="viewBox" :body-padding-top="isShowNav ? '46px' : '0'"  body-padding-bottom="55px">
+                <x-header v-if="isShowNav" slot="header" style="width:100%;position:absolute;left:0;top:0;z-index:100;"
+                          :left-options="leftOptions" :right-options="rightOptions" :title="title"
+                          :transition="headerTransition" @on-click-more="onClickMore">
+                  <span v-if="route.path === '/' || route.path === '/component/drawer'" slot="overwrite-left"
+                        @click="drawerVisibility = !drawerVisibility">
+                    <i class="ayui-iconfont ayui-icon-nav"></i>
+                  </span>
                 </x-header>
-
                 <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->
-                <transition
-                        @after-enter="$ayui.bus && $ayui.bus.$emit('ayui:after-view-enter')"
-                        :name="viewTransition" :css="!!direction">
+                <transition @after-enter="$ayui.bus && $ayui.bus.$emit('ayui:after-view-enter')" :name="viewTransition"
+                            :css="!!direction">
                     <router-view class="router-view"></router-view>
                 </transition>
-
                 <tabbar class="ayui-demo-tabbar" icon-class="ayui-center" v-show="!isTabbarDemo" slot="bottom">
                     <tabbar-item :link="{path:'/'}" :selected="route.path === '/'">
-            <span class="ayui-iconfont ayui-icon-home" slot="icon"
-                  style="position:relative;top: -2px;font-size: 22px;"></span>
+                        <span class="ayui-iconfont ayui-icon-home" slot="icon"
+                              style="position:relative;top: -2px;font-size: 22px;"></span>
                         <span slot="label">Home</span>
                     </tabbar-item>
                     <tabbar-item :link="{path:'/demo'}" :selected="isDemo" badge="9">
                         <span class="ayui-iconfont ayui-icon-demo" slot="icon" style="font-size: 22px;"></span>
-                        <span slot="label"><span v-if="componentName"
-                                                 class="ayui-demo-tabbar-component">{{componentName}}</span><span
-                                v-else>Demos</span></span>
+                        <span slot="label">
+                            <span v-if="componentName" class="ayui-demo-tabbar-component">{{componentName}}</span>
+                            <span v-else>Demos</span>
+                        </span>
                     </tabbar-item>
                 </tabbar>
-
             </view-box>
         </drawer>
     </div>
@@ -74,22 +61,22 @@
 
 <script>
   import {
-    Radio,
-    Group,
-    Cell,
-    Badge,
-    Drawer,
     Actionsheet,
+    Badge,
     ButtonTab,
     ButtonTabItem,
-    ViewBox,
-    XHeader,
+    Cell,
+    Drawer,
+    Group,
+    Loading,
+    Radio,
     Tabbar,
     TabbarItem,
-    Loading,
+    ViewBox,
+    XHeader,
   } from '@/components';
   import TransferDom from '@/directives/transfer-dom/index.js';
-  import {mapState, mapActions} from 'vuex';
+  import { mapActions, mapState } from 'vuex';
 
   export default {
     name: 'app',
@@ -171,16 +158,23 @@
       ...mapState({
         route: state => state.route,
         path: state => state.route.path,
+        deviceready: state => state.app.deviceready,
         demoTop: state => state.ayui.demoScrollTop,
         isLoading: state => state.ayui.isLoading,
         direction: state => state.ayui.direction,
       }),
       isShowBar() {
-        if (/component/.test(this.path)) {
-          return true;
-        }
-        return false;
-      },
+      if (this.entryUrl.indexOf('hide-tab-bar') > -1) {
+        return false
+      }
+      return true
+    },
+    isShowNav () {
+      if (this.entryUrl.indexOf('hide-nav') > -1) {
+        return false
+      }
+      return true
+    },
       leftOptions() {
         return {
           showBack: this.route.path !== '/',
@@ -220,6 +214,7 @@
     },
     data() {
       return {
+      entryUrl: document.location.href,
         showMenu: false,
         menus: {
           'language.noop': '<div class="menu-title">语言选择<br><small>你可以在这里修改你的语言选择</small></div>',
@@ -242,7 +237,6 @@
     @import './styles/tap.less';
 
     body {
-        background-color: #fff;
         touch-action: none;
     }
 
@@ -252,8 +246,17 @@
         overflow-x: hidden;
     }
 
+    .ayui-tab {
+        height: 100%;
+    }
+
+    .ayui-tab__panel {
+        width: 100%;
+    }
+
     .ayui-tabbar.ayui-demo-tabbar {
         background: #FFFFFF;
+        position: fixed;
     }
 
     .ayui-demo-tabbar .ayui-bar__item_on .demo-icon-22 {

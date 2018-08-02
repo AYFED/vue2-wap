@@ -29,14 +29,14 @@
     <divider>华丽的分割线</divider>
 
     <group-title>use swiper-item for image list</group-title>
-    <swiper :aspect-ratio="300/800">
+    <swiper :aspect-ratio="300/800" height="180px">
       <swiper-item class="swiper-demo-img" v-for="(item, index) in demo04_list" :key="index"><img :src="item"></swiper-item>
     </swiper>
 
     <br>
     <br>
     <group-title>set index = 1 with swiper-item</group-title>
-    <swiper :aspect-ratio="300/800" @on-index-change="onSwiperItemIndexChange" v-model="swiperItemIndex">
+    <swiper :aspect-ratio="300/800" @on-index-change="onSwiperItemIndexChange" v-model="swiperItemIndex" height="180px">
       <swiper-item class="swiper-demo-img" v-for="(item, index) in demo04_list" :key="index">
         <img :src="item">
       </swiper-item>
@@ -111,7 +111,7 @@ const baseList = [{
   title: '送你一辆车'
 }, {
   url: 'javascript:',
-  img: 'https://static.ayui.li/demo/5.jpg',
+  img: 'https://images1.aoyou.com/productlist/201711/ftf86606180916.png',
   title: '送你一次旅行',
   fallbackImg: 'https://images1.aoyou.com/productlist/201712/6pddv212095627.jpg'
 }]

@@ -129,15 +129,18 @@
       },
       clear() {
         this.currentValue = ''
+      this.emitEvent()
         this.isFocus = true
         this.setFocus()
         if (this.autoFixed && !this.isFixed) {
           this.isFixed = true
         }
+      this.$emit('on-clear')
       },
       cancel() {
         this.isCancel = true
         this.currentValue = ''
+      this.emitEvent()
         this.isFixed = false
         this.$emit('on-cancel')
       },

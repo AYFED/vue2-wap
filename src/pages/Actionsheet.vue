@@ -19,7 +19,6 @@
 
         <actionsheet v-model="show4" :menus="menus1" :close-on-clicking-mask="false" show-cancel
                      @on-click-mask="console('on click mask')"></actionsheet>
-
         <actionsheet v-model="show1" :menus="menus1" @on-click-menu="click"></actionsheet>
 
         <actionsheet v-model="show2" :menus="menus2" @on-click-menu="click" show-cancel></actionsheet>

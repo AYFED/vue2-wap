@@ -36,7 +36,7 @@
       <x-switch :title="$t('default')" v-model="show9" @on-change="onChange"></x-switch>
     </group>
     <div style="padding:15px;">
-      <x-button type="primary" @click.native="$ayui.toast.text('How are you~', 'top')">use text function</x-button>
+      <x-button type="primary" @click.native="$ayui.toast.text('How are you~', 'top')">使用函数设置文字</x-button>
     </div>
   </div>
 </template>

@@ -52,11 +52,8 @@ export default {
       if (!firstItem) {
         return false
       }
-
-      setTimeout(()=>{
-        this.length = this.$refs.box.children.length
-        this.height = this.itemHeight || firstItem.offsetHeight
-      },1000);
+      this.length = this.$refs.box.children.length
+      this.height = this.itemHeight || firstItem.offsetHeight
 
       if (this.direction === 'up') {
         this.cloneNode = firstItem.cloneNode(true)

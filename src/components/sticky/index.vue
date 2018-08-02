@@ -9,9 +9,20 @@
 
   export default {
     name: 'sticky',
+  data () {
+    return {
+      initTimes: 0
+    }
+  },
     created() {
       this.$ayui && this.$ayui.bus && this.$ayui.bus.$on('ayui:after-view-enter', this.bindSticky)
     },
+  activated () {
+    if (this.initTimes > 0) {
+      this.bindSticky()
+    }
+    this.initTimes++
+  },
     mounted() {
       this.$nextTick(() => {
         this.bindSticky()
@@ -22,19 +33,20 @@
     },
     methods: {
       bindSticky() {
-        this.$nextTick(() => {
-          setTimeout(() => {
-            sticky(this.$el, {
-              scrollBox: this.scrollBox,
-              offset: this.offset,
-              checkStickySupport: typeof this.checkStickySupport === 'undefined' ? true : this.checkStickySupport
-            })
-          }, 1000)
-        })
+      if (this.disabled) {
+        return
       }
-    },
-    props: ['scrollBox', 'offset', 'checkStickySupport']
-  }
+      this.$nextTick(() => {
+        sticky(this.$el, {
+          scrollBox: this.scrollBox,
+          offset: this.offset,
+          checkStickySupport: typeof this.checkStickySupport === 'undefined' ? true : this.checkStickySupport
+        })
+      })
+    }
+  },
+  props: ['scrollBox', 'offset', 'checkStickySupport', 'disabled']
+}
 </script>
 
 <style lang="less">
@@ -56,4 +68,10 @@
     top: 0;
     transform: translate3d(0, 0, 0);
   }
+.ayui-sticky-fill {
+  display: none;
+}
+.ayui-fixed + .ayui-sticky-fill {
+  display: block;
+}
 </style>

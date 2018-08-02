@@ -167,7 +167,10 @@
     margin-left: 8px;
     margin-right: 0
   }
-
+.ayui-header .ayui-header-right .ayui-header-more:after {
+  content: "\2022\0020\2022\0020\2022\0020";
+  font-size: 16px;
+}
   .ayui-header-fade-in-right-enter-active {
     animation: fadeinR .5s;
   }

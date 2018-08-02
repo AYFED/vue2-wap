@@ -8,18 +8,26 @@
       :hide-on-blur="hideOnBlur"
       :mask-z-index="maskZIndex"
       @on-hide="$emit('on-hide')">
-      <div class="ayui-dialog__hd" v-if="!!title">
+      <div class="ayui-dialog__hd" v-if="!!title" :class="{'with-no-content': !showContent}">
         <strong class="ayui-dialog__title">{{ title }}</strong>
       </div>
-      <div class="ayui-dialog__bd" v-if="!showInput">
-        <slot><div v-html="content"></div></slot>
-      </div>
-      <div v-else class="ayui-prompt" @touchstart.prevent="setInputFocus">
-        <input class="ayui-prompt-msgbox" v-bind="inputAttrs" v-model="msg" :placeholder="placeholder" ref="input"/>
-      </div>
+      <template v-if="showContent">
+        <div class="ayui-dialog__bd" v-if="!showInput">
+          <slot><div v-html="content"></div></slot>
+        </div>
+        <div v-else class="ayui-prompt">
+          <input
+            class="ayui-prompt-msgbox"
+            v-bind="getInputAttrs()"
+            v-model="msg"
+            :placeholder="placeholder"
+            @touchend="setInputFocus"
+            ref="input"/>
+        </div>
+      </template>
       <div class="ayui-dialog__ft">
-        <a href="javascript:;" class="ayui-dialog__btn ayui-dialog__btn_default" @click="_onCancel">{{cancelText || $t('cancel_text')}}</a>
-        <a href="javascript:;" class="ayui-dialog__btn ayui-dialog__btn_primary" @click="_onConfirm">{{confirmText || $t('confirm_text')}}</a>
+        <a v-if="showCancelButton" href="javascript:;" class="ayui-dialog__btn ayui-dialog__btn_default" @click="_onCancel">{{cancelText || $t('cancel_text')}}</a>
+        <a v-if="showConfirmButton" href="javascript:;" class="ayui-dialog__btn" :class="`ayui-dialog__btn_${confirmType}`" @click="_onConfirm">{{confirmText || $t('confirm_text')}}</a>
       </div>
     </x-dialog>
   </div>
@@ -70,7 +78,23 @@ export default {
       type: Boolean,
       default: true
     },
-    inputAttrs: Object
+    inputAttrs: Object,
+    showContent: {
+      type: Boolean,
+      default: true
+    },
+    confirmType: {
+      type: String,
+      default: 'primary'
+    },
+    showCancelButton: {
+      type: Boolean,
+      default: true
+    },
+    showConfirmButton: {
+      type: Boolean,
+      default: true
+    }
   },
   created () {
     this.showValue = this.show
@@ -104,10 +128,18 @@ export default {
     }
   },
   methods: {
+    getInputAttrs () {
+      return this.inputAttrs || {
+        type: 'text'
+      }
+    },
     setInputValue (val) {
       this.msg = val
     },
-    setInputFocus () {
+    setInputFocus (evt) {
+      if (evt) {
+        evt.preventDefault()
+      }
       this.$refs.input.focus()
     },
     _onConfirm () {

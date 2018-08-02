@@ -5,6 +5,7 @@
       </slot>
     </span>
     <div class="ayui-popover"
+      v-transfer-dom
       ref="popover"
       :style="popoverStyle"
       v-show="show">
@@ -20,44 +21,21 @@
 
 <script>
 import ClickOutside from '../../directives/click-outside'
+import TransferDom from '../../directives/transfer-dom'
 
 export default {
   name: 'popover',
   mounted () {
     this.$nextTick(() => {
-      setTimeout(()=>{
-        const trigger = this.$refs.trigger.children[0]
-        const popover = this.$refs.popover
-        switch (this.placement) {
-          case 'top' :
-            this.position.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
-            this.position.top = trigger.getBoundingClientRect().top - popover.offsetHeight - this.gutter
-            break
-          case 'left':
-            this.position.left = trigger.offsetLeft - popover.offsetWidth - this.gutter
-            this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
-            break
-          case 'right':
-            this.position.left = trigger.offsetLeft + trigger.offsetWidth + this.gutter
-            this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
-            break
-          case 'bottom':
-            this.position.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
-            this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight + this.gutter
-            break
-          default:
-            console.warn('Wrong placement prop')
-        }
-        this.show = false
-        this.popoverStyle = {
-          top: this.position.top + 'px',
-          left: this.position.left + 'px',
-          display: 'none'
-        }
-      },1000)
+      this.init()
+      window.addEventListener('resize', this.reset)
     })
   },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.reset)
+  },
   directives: {
+    TransferDom,
     ClickOutside
   },
   props: {
@@ -69,6 +47,44 @@ export default {
     }
   },
   methods: {
+    reset () {
+      if (this.show) {
+        this.init(true)
+      }
+    },
+    init (isReset) {
+      const trigger = this.$refs.trigger.children[0]
+      const popover = this.$refs.popover
+      switch (this.placement) {
+        case 'top' :
+          this.position.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
+          this.position.top = trigger.getBoundingClientRect().top - popover.offsetHeight - this.gutter
+          break
+        case 'left':
+          this.position.left = trigger.offsetLeft - popover.offsetWidth - this.gutter
+          this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
+          break
+        case 'right':
+          this.position.left = trigger.offsetLeft + trigger.offsetWidth + this.gutter
+          this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
+          break
+        case 'bottom':
+          this.position.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
+          this.position.top = trigger.getBoundingClientRect().top + trigger.offsetHeight + this.gutter
+          break
+        default:
+          console.warn('Wrong placement prop')
+      }
+      if (!isReset) {
+        this.show = false
+      }
+
+      this.popoverStyle = {
+        top: this.position.top + 'px',
+        left: this.position.left + 'px',
+        display: isReset ? this.popoverStyle.display : 'none'
+      }
+    },
     onClickedOutside () {
       if (this.show) {
         this.show = false
@@ -77,6 +93,11 @@ export default {
     },
     toggle () {
       this.show = !this.show
+      if (this.show) {
+        this.$nextTick(() => {
+          this.init(true)
+        })
+      }
       this.$emit(`on-${this.show === true ? 'show' : 'hide'}`)
     }
   },

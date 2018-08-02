@@ -1,6 +1,6 @@
 <template>
-  <div class="ay-toast">
-    <div class="ayui-mask_transparent" v-show="isShowMask && show"></div>
+  <div class="ay-toast" v-show="isShowMask || show">
+    <div class="ayui-mask_transparent" v-show="show"></div>
     <transition :name="currentTransition">
       <div class="ayui-toast" :style="{width: width}" :class="toastClass" v-show="show">
         <i class="ayui-iconfont ayui-icon-toast" v-show="type !== 'text'"></i>

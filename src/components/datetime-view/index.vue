@@ -17,7 +17,10 @@ export default {
         this.picker = new Picker(objectAssign(this.pickerOptions, {
           renderInline: true
         }))
-        this.picker.show()
+        
+        this.$nextTick(() => {
+          this.picker.show()
+        })
       })
     }
   }
