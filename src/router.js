@@ -105,6 +105,17 @@ const Point = () => import('./pages/v-chart/point')
 const AreaCompare = () => import('./pages/v-chart/area_compare')
 const AreaBasic = () => import('./pages/v-chart/area_basic')
 const PreventRender = () => import('./pages/v-chart/prevent_render')
+const Pullup = () => import('./pages/Pullup')
+const Pulldown = () => import('./pages/Pulldown')
+const PulldownPullup = () => import('./pages/PulldownPullup')
+const Agree = () => import('./pages/Agree')
+const AppTest = () => import('./pages/AppTest')
+const Center = () => import('./pages/Center')
+const Close = () => import('./pages/Close')
+const Comment = () => import('./pages/Comment')
+const Device = () => import('./pages/Device')
+const Donate = () => import('./pages/Donate')
+const FormatTime = () => import('./pages/FormatTime')
 
 Vue.use(Router);
 
@@ -523,6 +534,54 @@ export default new Router({
       path: '/component/v-chart/prevent_render',
       name: 'prevent_render',
       component: PreventRender
+    },{
+      path: '/component/pullup',
+      name: 'pullup',
+      component: Pullup
+    },{
+      path: '/component/pulldown',
+      name: 'pulldown',
+      component: Pulldown
+    },{
+      path: '/component/pulldown-pullup',
+      name: 'pulldown-pullup',
+      component: PulldownPullup
+    },{
+      path: '/component/agree',
+      name: 'agree',
+      component: Agree
+    },{
+      path: '/component/app-test',
+      name: 'app-test',
+      component: AppTest
+    },{
+      path: '/component/center',
+      name: 'center',
+      component: Center
+    },{
+      path: '/component/close',
+      name: 'close',
+      component: Close
+    },{
+      path: '/component/comment',
+      name: 'comment',
+      component: Comment
+    },{
+      path: '/component/device',
+      name: 'device',
+      component: Device
+    },{
+      path: '/component/donate',
+      name: 'donate',
+      component: Donate
+    },{
+      path: '/component/formatime',
+      name: 'formatime',
+      component: FormatTime
+    },{
+      path: '/component/inline-calendar-multi',
+      name: 'inline-calendar-multi',
+      component: () => import('./pages/InlineCalendarMulti')
     }
   ]
 })

@@ -1,23 +1,17 @@
 /* Image Blur plugin, author @msurguy
-
  Usage:
-
  Create a set of elements that follows the following HTML structure:
-
  <div class="container">
    <div class="content">
    ...
    </div>
  </div>
-
  Add the following css:
-
  .container {
    overflow: hidden
    width: 100%
    position: relative
  }
-
  .container .bg-blur-overlay {
    z-index: -1
    position: absolute
@@ -30,7 +24,6 @@
    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.08) 59%, rgba(0, 0, 0, 0.9) 100%)
    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.08) 59%, rgba(0, 0, 0, 0.9) 100%)
  }
-
  .container .bg-blur {
    z-index: -2
    opacity: 0
@@ -42,11 +35,9 @@
    top: 0
    left: 0
  }
-
  .container .content {
   z-index: 1
  }
-
  */
 
 import Eventor from '../../libs/eventor'

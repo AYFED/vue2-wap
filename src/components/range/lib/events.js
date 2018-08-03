@@ -1,8 +1,8 @@
 /**
  * Module dependencies.
  */
-import { Event as events } from './event';
-import {Delegate as delegate } from './delegate';
+import * as events from './event';
+import delegate from './delegate';
 
 /**
  * Expose `Events`.s

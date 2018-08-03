@@ -99,9 +99,7 @@ Vue.use(BusPlugin);
 Vue.use(DatetimePlugin);
 
 // test
-if (process.env.platform === 'app') {
-  Vue.use(AppPlugin, store);
-}
+Vue.use(AppPlugin, store);
 
 const FastClick = require('fastclick');
 FastClick.attach(document.body);

@@ -9,12 +9,12 @@
  * @return {Function}
  * @api public
  */
-class Event{
 
+function event(){
 }
 
 
-Event.bind = function (el, type, fn, capture) {
+event.bind = function (el, type, fn, capture) {
   var bind = window.addEventListener ? 'addEventListener' : 'attachEvent'
   var prefix = bind !== 'addEventListener' ? 'on' : ''
   el[bind](prefix + type, fn, capture || false)
@@ -32,7 +32,7 @@ Event.bind = function (el, type, fn, capture) {
  * @api public
  */
 
-Event.unbind = function (el, type, fn, capture) {
+event.unbind = function (el, type, fn, capture) {
   var bind = window.addEventListener ? 'addEventListener' : 'attachEvent'
   var prefix = bind !== 'addEventListener' ? 'on' : ''
   var unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent'
@@ -40,4 +40,4 @@ Event.unbind = function (el, type, fn, capture) {
   return fn
 }
 
-export default Event
+export default event

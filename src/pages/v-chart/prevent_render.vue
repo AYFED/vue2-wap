@@ -51,7 +51,7 @@ export default {
         .size(20)
         .animate({
           appear: {
-            duration: 1200,
+            duration: 3200,
             easing: 'cubicIn'
           }
         })
@@ -60,7 +60,3 @@ export default {
   }
 }
 </script>
-
-<demo>
-title: 自定义渲染逻辑
-</demo>

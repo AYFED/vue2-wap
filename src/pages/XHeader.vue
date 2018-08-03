@@ -27,8 +27,8 @@
     <x-header title="slot:overwrite-title">
       <div class="overwrite-title-demo" slot="overwrite-title">
         <button-tab>
-          <button-tab-item selected>A</button-tab-item>
-          <button-tab-item>B</button-tab-item>
+          <button-tab-item class="fix-btn-demo" selected>A</button-tab-item>
+          <button-tab-item class="fix-btn-demo">B</button-tab-item>
         </button-tab>
       </div>
     </x-header>
@@ -65,8 +65,16 @@ export default {
 }
 </script>
 
-<style>
-.overwrite-title-demo {
-  margin-top: 5px;
-}
+<style lang="less">
+  .overwrite-title-demo {
+    margin-top: 5px;
+  }
+
+  .fix-btn-demo{
+    background: #fff !important;
+  }
+
+  .fix-btn-demo.ayui-button-group-current{
+    background: rgba(67, 52, 221, 0.8) !important;
+  }
 </style>

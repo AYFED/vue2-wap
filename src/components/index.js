@@ -104,6 +104,7 @@ import VAxis from './v-chart/v-axis.vue'
 import VLegend from './v-chart/v-legend.vue'
 import VBar from './v-chart/v-bar.vue'
 import VPie from './v-chart/v-pie.vue'
+import Agree from './agree/index'
 
 
 export {
@@ -213,4 +214,5 @@ export {
   VLegend,
   VBar,
   VPie,
+  Agree
 }

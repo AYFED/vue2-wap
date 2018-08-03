@@ -3,7 +3,7 @@
  */
 
 import closest from './closest';
-import { Event as event } from './event';
+import event from './event';
 
 /**
  * Delegate event `type` to `selector`
@@ -19,11 +19,10 @@ import { Event as event } from './event';
  * @api public
  */
 
-class Delegate{
-
+function delegate () {
 }
 
-Delegate.bind = function (el, selector, type, fn, capture) {
+delegate.bind = function (el, selector, type, fn, capture) {
   return event.bind(el, type, function (e) {
     var target = e.target || e.srcElement
     e.delegateTarget = closest(target, selector, true, el)
@@ -41,8 +40,8 @@ Delegate.bind = function (el, selector, type, fn, capture) {
  * @api public
  */
 
-Delegate.unbind = function (el, type, fn, capture) {
+delegate.unbind = function (el, type, fn, capture) {
   event.unbind(el, type, fn, capture)
 }
 
-export default Delegate
+export default delegate

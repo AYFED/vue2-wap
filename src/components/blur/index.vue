@@ -11,13 +11,16 @@ export default {
   name: 'blur',
   mounted () {
     this.$nextTick(() => {
-      this._blur = new Blur(this.$el, {
-        url: this.url,
-        blurAmount: this.blurAmount,
-        imageClass: 'ayui-bg-blur',
-        duration: 100, // If the image needs to be faded in, how long that should take
-        opacity: 1 // Specify the final opacity that the image will have
-      })
+      setTimeout(() => {
+        debugger
+        this._blur = new Blur(this.$el, {
+          url: this.url,
+          blurAmount: this.blurAmount,
+          imageClass: 'ayui-bg-blur',
+          duration: 100, // If the image needs to be faded in, how long that should take
+          opacity: 1 // Specify the final opacity that the image will have
+        })
+      }, 1000)
     })
   },
   props: {
