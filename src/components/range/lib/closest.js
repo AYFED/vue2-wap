@@ -2,13 +2,7 @@
  * Module Dependencies
  */
 
-var matches = require('./matches-selector')
-
-/**
- * Export `closest`
- */
-
-module.exports = closest
+import matches from "./matches-selector"
 
 /**
  * Closest
@@ -18,7 +12,7 @@ module.exports = closest
  * @param {Element} scope (optional)
  */
 
-function closest (el, selector, scope) {
+export default function closest (el, selector, scope) {
   scope = scope || document.documentElement
 
   // walk up the dom

@@ -46,37 +46,40 @@ export default {
   mounted () {
     const _this = this
     this.$nextTick(() => {
-      let options = {
-        callback: function (value) {
-          _this.currentValue = value
-        },
-        decimal: this.decimal,
-        start: this.currentValue,
-        min: this.min,
-        max: this.max,
-        minHTML: this.minHTML,
-        maxHTML: this.maxHTML,
-        disable: this.disabled,
-        disabledOpacity: this.disabledOpacity,
-        initialBarWidth: window.getComputedStyle(this.$el.parentNode).width.replace('px', '') - 80,
-        onTouchstart (e) {
-          _this.$emit('on-touchstart', e)
-        },
-        onTouchend (e) {
-          _this.$emit('on-touchend', e)
+      setTimeout(function () {
+        // console.log(_this.$el.parentNode.clientWidth)
+        let options = {
+          callback: function (value) {
+            _this.currentValue = value
+          },
+          decimal: _this.decimal,
+          start: _this.currentValue,
+          min: _this.min,
+          max: _this.max,
+          minHTML: _this.minHTML,
+          maxHTML: _this.maxHTML,
+          disable: _this.disabled,
+          disabledOpacity: _this.disabledOpacity,
+          initialBarWidth: _this.$el.parentNode.clientWidth - 80,
+          onTouchstart (e) {
+            _this.$emit('on-touchstart', e)
+          },
+          onTouchend (e) {
+            _this.$emit('on-touchend', e)
+          }
         }
-      }
-      if (this.step !== 0) {
-        options.step = this.step
-      }
-      this.range = new Powerange(this.$el.querySelector('.ayui-range-input'), options)
-      const handleTop = (this.rangeHandleHeight - this.rangeBarHeight) / 2
-      this.$el.querySelector('.range-handle').style.top = `-${handleTop}px`
-      this.$el.querySelector('.range-bar').style.height = `${this.rangeBarHeight}px`
-      this.handleOrientationchange = () => {
-        this.update()
-      }
-      window.addEventListener('orientationchange', this.handleOrientationchange, false)
+        if (_this.step !== 0) {
+          options.step = _this.step
+        }
+        _this.range = new Powerange(_this.$el.querySelector('.ayui-range-input'), options)
+        const handleTop = (_this.rangeHandleHeight - _this.rangeBarHeight) / 2
+        _this.$el.querySelector('.range-handle').style.top = `-${handleTop}px`
+        _this.$el.querySelector('.range-bar').style.height = `${_this.rangeBarHeight}px`
+        _this.handleOrientationchange = () => {
+          _this.update()
+        }
+        window.addEventListener('orientationchange', _this.handleOrientationchange, false)
+      },1e3);
     })
   },
   methods: {
@@ -133,5 +136,9 @@ export default {
 <style lang="less">
 @import '../../styles/variable.less';
 @import './powerange.less';
+
+.ayui-cell__ft{
+  display: block;
+}
 </style>
 

@@ -1,13 +1,15 @@
 /**
  * Module dependencies.
  */
-import * as events from './event';
-import delegate from './delegate';
+
+import events from './event'
+import delegate from './delegate'
 
 /**
- * Expose `Events`.s
+ * Expose `Events`.
  */
 
+export default Events
 
 /**
  * Initialize an `Events` with the given
@@ -171,5 +173,3 @@ function parse (event) {
     selector: parts.join(' ')
   }
 }
-
-export default Events

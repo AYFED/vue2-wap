@@ -1,5 +1,5 @@
 <template>
-  <div class="ayui-tab">
+  <div class="ayui-tabs">
     <slot name="header"></slot>
     <div class="ayui-tab__panel ayui-fix-safari-overflow-scrolling" ref="viewBoxBody" id="ayui_view_box_body" :style='{paddingTop: bodyPaddingTop, paddingBottom: bodyPaddingBottom}'>
       <slot></slot>
