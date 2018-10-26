@@ -1,50 +1,50 @@
 export default {
-  install (Vue, store) {
+  install(Vue, store) {
     store.registerModule('app', {
       state: {
-        deviceready: false
+        deviceready: false,
       },
       mutations: {
-        updateDiviceReadyStatus (state, payload) {
-          state.deviceready = payload.isReady
-        }
-      }
-    })
+        updateDiviceReadyStatus(state, payload) {
+          state.deviceready = payload.isReady;
+        },
+      },
+    });
 
-    const fns = []
-    Vue.prototype.$api = {}
+    const fns = [];
+    Vue.prototype.$api = {};
     window.apiready = function () {
       store.commit('updateDiviceReadyStatus', {
-        isReady: true
-      })
-      Vue.prototype.$api = window.api
+        isReady: true,
+      });
+      Vue.prototype.$api = window.api;
       while (fns.length) {
-        let fn = fns.shift()
-        fn()
+        let fn = fns.shift();
+        fn();
       }
-    }
+    };
 
     Vue.prototype.$deviceready = function (fn) {
       if (!fn || typeof fn !== 'function') {
-        return
+        return;
       }
       if (!store.state.app.deviceready) {
-        fns.push(fn)
+        fns.push(fn);
       } else {
-        fn()
+        fn();
       }
-    }
+    };
 
     /** for reloading page **/
-    let count = 0
+    let count = 0;
     document.addEventListener('click', () => {
-      count++
-      if (count === 3) {
-        document.location.reload()
+      count++;
+      if (count >= 10) {
+        document.location.reload();
       }
       setTimeout(() => {
-        count = 0
-      }, 500)
-    })
-  }
-}
+        count = 0;
+      }, 500);
+    });
+  },
+};
