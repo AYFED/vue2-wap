@@ -582,6 +582,10 @@ export default new Router({
       path: '/component/inline-calendar-multi',
       name: 'inline-calendar-multi',
       component: () => import('./pages/InlineCalendarMulti')
+    },{
+      path: '/component/index-list',
+      name: 'index-list',
+      component: () => import('./pages/IndexList')
     }
   ]
 })

@@ -106,6 +106,7 @@ import VBar from './v-chart/v-bar.vue'
 import VPie from './v-chart/v-pie.vue'
 import Agree from './agree/index'
 import XVideo from './video/index'
+import IndexList from './index-list/index'
 
 export {
   Actionsheet,
@@ -215,5 +216,6 @@ export {
   VBar,
   VPie,
   Agree,
-  XVideo
+  XVideo,
+  IndexList
 }
