@@ -35,6 +35,7 @@
           cells
         });
       });
+      this.alphabet = this.alphabet.filter(item => item.cells.length > 0)
     }
   };
 </script>
