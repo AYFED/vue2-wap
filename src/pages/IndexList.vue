@@ -4,8 +4,8 @@
         <p class="page-indexlist-desc">此例请使用手机查看</p>
         <div class="page-indexlist-wrapper">
             <index-list>
-                <group v-for="item in alphabet" :title="item.initial">
-                    <cell v-for="cell in item.cells" :title="cell"></cell>
+                <group v-for="(item, index) in alphabet" :key="index" :title="item.initial">
+                    <cell v-for="(cell, cellIndex) in item.cells" :key="cellIndex" :title="cell"></cell>
                 </group>
             </index-list>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="ayui-check-icon" @click="updateValue">
-    <icon type="success" v-show="type === 'default' && value"></icon>
+    <icon type="success-circle-default" v-show="type === 'default' && value" style="vertical-align: -2px;"></icon>
     <icon type="success-circle" v-show="type === 'plain' && value"></icon>
     <icon type="circle" v-show="!value"></icon>
     <span><slot></slot></span>

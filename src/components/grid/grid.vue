@@ -1,8 +1,5 @@
 <template>
-  <div class="ayui-grids">
-    :class="{
-      'ayui-grid-no-lr-borders': !showLrBorders
-    }">
+  <div class="ayui-grids" :class="{'ayui-grid-no-lr-borders': !showLrBorders}">
     <slot></slot>
   </div>
 </template>
@@ -20,8 +17,8 @@ export default {
     rows: {
       type: Number,
       validator () {
-        
-        
+
+
         return true
       }
     },

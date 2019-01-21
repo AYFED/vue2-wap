@@ -28,4 +28,8 @@ export default {
 
 <style lang="less">
 @import '../../styles/ayui/widget/ayui_tab/ay-tabbar';
+
+.ayui-tabs{
+    height: 100%;
+}
 </style>

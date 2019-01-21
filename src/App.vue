@@ -4,8 +4,7 @@
             <loading v-model="isLoading"></loading>
         </div>
         <div v-transfer-dom>
-            <actionsheet :menus="menus" v-model="showMenu" :showCancel="false"
-                         @on-click-menu="changeLocale"></actionsheet>
+            <actionsheet :menus="menus" v-model="showMenu" :showCancel="false" @on-click-menu="changeLocale"></actionsheet>
         </div>
         <drawer v-show="!isLoading" width="200px;" :show.sync="drawerVisibility" :show-mode="showModeValue"
                 :placement="showPlacementValue" :drawer-style="{'background-color':'#fff', width: '200px'}">
@@ -27,7 +26,7 @@
                 </group>
             </div>
             <!-- main content -->
-            <view-box ref="viewBox" :body-padding-top="isShowNav ? '46px' : '0'" body-padding-bottom="55px">
+            <view-box ref="viewBox" :body-padding-top="isShowNav ? '46px' : '0'" body-padding-bottom="52px">
                 <x-header v-if="isShowNav" slot="header" style="width:100%;position:absolute;left:0;top:0;z-index:100;"
                           :left-options="leftOptions" :right-options="rightOptions" :title="title"
                           :transition="headerTransition" @on-click-more="onClickMore">

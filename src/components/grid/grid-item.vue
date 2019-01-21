@@ -1,11 +1,5 @@
 <template>
-  <a href="javascript:;"
-    class="ayui-grid"
-    :class="{
-      'ayui-grid-item-no-border': (isLast && !$parent.showLrBorders) || (!isLast && !$parent.showVerticalDividers),
-    }"
-    @click="onClick"
-    :style="style">
+  <a href="javascript:void(0);" class="ayui-grid" :class="{'ayui-grid-item-no-border': (isLast && !$parent.showLrBorders) || (!isLast && !$parent.showVerticalDividers),}" @click="onClick" :style="style">
     <div class="ayui-grid__icon" v-if="hasIconSlot || icon">
       <slot name="icon">
         <img :src="icon" alt="">

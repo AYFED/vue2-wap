@@ -40,7 +40,9 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
+  @whatever: ~">>>";
+
   .space-btn {
     padding: 5px 0;
     margin: 10px;
@@ -53,5 +55,11 @@ export default {
     margin: 10px;
     text-align: center;
     border: 1px green solid;
+  }
+
+  .ayui-tab-wrap{
+    & > @{whatever} .ayui-tab{
+      background: #fff;
+    }
   }
 </style>
