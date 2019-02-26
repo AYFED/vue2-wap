@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     /**
-    * https://github.com/airyland/ayui/issues/311
     * https://benfrain.com/z-index-stacking-contexts-experimental-css-and-ios-safari/
     */
     fixSafariOverflowScrolling (type) {

@@ -47,7 +47,7 @@ export default {
     const _this = this
     this.$nextTick(() => {
       setTimeout(function () {
-        // console.log(_this.$el.parentNode.clientWidth)
+        
         let options = {
           callback: function (value) {
             _this.currentValue = value
@@ -60,7 +60,7 @@ export default {
           maxHTML: _this.maxHTML,
           disable: _this.disabled,
           disabledOpacity: _this.disabledOpacity,
-          initialBarWidth: _this.$el.parentNode.clientWidth - 80,
+        initialBarWidth: window.getComputedStyle(_this.$el.parentNode).width.replace('px', '') - 80,
           onTouchstart (e) {
             _this.$emit('on-touchstart', e)
           },

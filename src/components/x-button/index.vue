@@ -54,7 +54,7 @@ export default {
     classes () {
       return [
         {
-          'ayui-btn_disabled': this.disabled,
+          'ayui-btn_disabled': !this.plain && this.disabled,
           'ayui-btn_plain-disabled': this.plain && this.disabled,
           'ayui-btn_mini': this.mini,
           'ayui-x-button-no-border': this.noBorder

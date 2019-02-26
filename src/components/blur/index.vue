@@ -12,7 +12,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       setTimeout(() => {
-        debugger
+        
         this._blur = new Blur(this.$el, {
           url: this.url,
           blurAmount: this.blurAmount,

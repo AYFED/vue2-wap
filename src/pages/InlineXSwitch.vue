@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top:15px;margin-left:10px;">
+    <div style="text-align:center;margin-top:15px;">
       <inline-x-switch v-model="value"></inline-x-switch>
     </div>
     <group>

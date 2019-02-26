@@ -22,7 +22,8 @@
       <cell title="2018-08-08">
         <clocker time="2018-08-08">
           <span class="day">%_D1</span>
-          <span class="day">%_D2</span>天
+          <span class="day">%_D2</span>
+          <span class="day">%_D3</span>天
           <span class="day">%_H1</span>
           <span class="day">%_H2</span>时
           <span class="day">%_M1</span>

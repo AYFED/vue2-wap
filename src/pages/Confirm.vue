@@ -15,6 +15,9 @@
     <group>
       <x-switch :title="$t('closeOnConfirm=false')" v-model="show4"></x-switch>
     </group>
+    <group>
+      <x-switch :title="$t('showCancelButton=false')" v-model="show6"></x-switch>
+    </group>
     <div v-transfer-dom>
       <confirm v-model="show"
       :title="$t('Confirm deleting the item')"
@@ -28,7 +31,7 @@
     <br>
     <div v-transfer-dom>
       <confirm v-model="show3"
-      :show-input=true
+      show-input
       :title="$t('Confirm deleting the item')"
       :input-attrs="{type: 'number'}"
       @on-cancel="onCancel"
@@ -40,15 +43,14 @@
     <br>
     <div v-transfer-dom>
       <confirm v-model="show5"
-      :show-input=true
+      show-input
       ref="confirm5"
       :title="$t('Confirm deleting the item')"
-      :input-attrs="{type: 'string'}"
       @on-cancel="onCancel"
       @on-confirm="onConfirm5"
       @on-show="onShow5"
       @on-hide="onHide">
-      </confirm>`
+      </confirm>
     </div>
     <br>
     <div v-transfer-dom>
@@ -69,6 +71,16 @@
       :close-on-confirm="false"
       :title="$t('Confirm deleting the item')"
       @on-confirm="onConfirm4">
+        <p style="text-align:center;">{{ $t('Are you sure?') }}</p>
+      </confirm>
+    </div>
+    <br>
+    <div v-transfer-dom>
+      <confirm
+      v-model="show6"
+      :show-cancel-button="false"
+      :title="$t('Confirm deleting the item')"
+      @on-confirm="onConfirm">
         <p style="text-align:center;">{{ $t('Are you sure?') }}</p>
       </confirm>
     </div>
@@ -105,7 +117,8 @@ export default {
       show2: false,
       show3: false,
       show4: false,
-      show5: false
+      show5: false,
+      show6: false
     }
   },
   methods: {

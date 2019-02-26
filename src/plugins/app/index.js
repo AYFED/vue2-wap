@@ -39,7 +39,7 @@ export default {
     let count = 0;
     document.addEventListener('click', () => {
       count++;
-      if (count >= 10) {
+      if (count === 3) {
         document.location.reload();
       }
       setTimeout(() => {

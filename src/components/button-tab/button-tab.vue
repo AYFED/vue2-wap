@@ -78,6 +78,7 @@ export default {
   -webkit-touch-callout: none;
 
   & {
+    display: box;
     display: flex;
   }
 

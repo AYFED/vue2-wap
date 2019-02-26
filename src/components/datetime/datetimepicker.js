@@ -395,7 +395,7 @@ DatetimePicker.prototype = {
       data = this.config.hourList.map(hour => {
         return {
           name: parseRow(config['hourRow'], hour),
-          value: addZero(hour)
+          value: Number(hour)
         }
       })
     }

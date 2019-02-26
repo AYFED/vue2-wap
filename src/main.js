@@ -132,14 +132,14 @@ let historyCount = history.getItem('count') * 1 || 0;
 history.setItem('/', 0);
 let isPush = false;
 let endTime = Date.now();
-const methods = ['push', 'go', 'replace', 'forward', 'back'];
+let methods = ['push', 'go', 'replace', 'forward', 'back']
 
 document.addEventListener('touchend', () => {
   endTime = Date.now();
 });
 
 methods.forEach((key) => {
-  const method = router[key].bind(router);
+  let method = router[key].bind(router)
   router[key] = function (...args) {
     isPush = true;
     method(...args);
@@ -172,7 +172,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (/\/http/.test(to.path)) {
-    const url = to.path.split('http')[1];
+    let url = to.path.split('http')[1]
     window.location.href = `http${url}`;
   } else {
     next();

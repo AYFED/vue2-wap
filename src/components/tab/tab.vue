@@ -183,6 +183,7 @@ export default {
 }
 .ayui-tab {
   display: flex;
+  background-color: #fff;
   height: 44px;
   position: relative;
 }
@@ -190,6 +191,7 @@ export default {
   padding: 0;
   border: 0;
   outline: 0;
+  background: 0 0;
   appearance: none;
 }
 .ayui-tab .ayui-tab-item {

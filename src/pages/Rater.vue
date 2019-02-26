@@ -51,6 +51,12 @@
       </cell>
     </group>
 
+    <group title="set min">
+      <cell title="min = 3">
+        <rater v-model="data7" :min="3"></rater>
+      </cell>
+    </group>
+
   </div>
 </template>
 
@@ -68,12 +74,13 @@ export default {
     return {
       data1: 0,
       data2: 5,
-      data3: 5,
+      data3: '5',
       data4: 3,
       data41: 3.7,
       data42: 3.5,
       data5: 3,
-      data6: 3
+      data6: 3,
+      data7: 0
     }
   }
 }
