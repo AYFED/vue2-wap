@@ -342,5 +342,9 @@
   {
     "name": "wechat-emotion",
     "icon": "&#xe6ba;"
+  },
+  {
+    "name": "index-list",
+    "icon": "&#xe653;"
   }
 ]

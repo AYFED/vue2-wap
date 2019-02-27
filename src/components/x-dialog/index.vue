@@ -110,6 +110,7 @@ export default {
 @import '../../styles/ayui-modal';
 
 .ayui-x-dialog-absolute .ayui-dialog {
-  position: absolute
+  position: absolute;
+  height: 180px;
 }
 </style>
