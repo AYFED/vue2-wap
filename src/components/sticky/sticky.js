@@ -31,6 +31,10 @@ export default function (nav, options = {}) {
   const checkStickySupport = options.checkStickySupport === true || false
   if (typeof scrollBox === 'string') {
     scrollBox = document.getElementById(scrollBox)
+    if (!scrollBox) {
+      
+      return
+    }
   }
 
   let navOffsetY = nav.offsetTop - offset

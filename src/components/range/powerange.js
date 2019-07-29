@@ -1,7 +1,7 @@
-import { findClosest, getWidth, percentage } from './utils';
-import classes from './lib/classes';
-import mouse from './lib/mouse';
-import events from './lib/events';
+import { findClosest, getWidth, percentage } from './utils'
+import classes from './lib/classes'
+import mouse from './lib/mouse'
+import events from './lib/events'
 
 function Horizontal(element, options) {
   this.element = element;

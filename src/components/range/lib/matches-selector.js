@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-import query from "./query"
+import { all } from './query'
 
 /**
  * Element prototype.
@@ -24,6 +24,8 @@ var vendor = proto.matches || proto.webkitMatchesSelector || proto.mozMatchesSel
  * Expose `match()`.
  */
 
+export default match
+
 /**
  * Match `el` to `selector`.
  *
@@ -33,10 +35,10 @@ var vendor = proto.matches || proto.webkitMatchesSelector || proto.mozMatchesSel
  * @api public
  */
 
-export default function match (el, selector) {
+function match (el, selector) {
   if (!el || el.nodeType !== 1) return false
   if (vendor) return vendor.call(el, selector)
-  var nodes = query.all(selector, el.parentNode)
+  var nodes = all(selector, el.parentNode)
   for (var i = 0; i < nodes.length; ++i) {
     if (nodes[i] === el) return true
   }

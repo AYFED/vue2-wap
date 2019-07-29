@@ -3,7 +3,7 @@
  */
 
 import events from './event'
-import delegate from './delegate'
+import {bind} from './delegate'
 
 /**
  * Expose `Events`.
@@ -81,7 +81,7 @@ Events.prototype.bind = function (event, method) {
 
   // bind
   if (e.selector) {
-    cb = delegate.bind(el, e.selector, name, cb)
+    cb = bind(el, e.selector, name, cb)
   } else {
     events.bind(el, name, cb)
   }

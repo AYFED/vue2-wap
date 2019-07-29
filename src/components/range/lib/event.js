@@ -1,40 +1,41 @@
-let events = {
-  /**
-   * Bind `el` event `type` to `fn`.
-   *
-   * @param {Element} el
-   * @param {String} type
-   * @param {Function} fn
-   * @param {Boolean} capture
-   * @return {Function}
-   * @api public
-   */
 
-  bind: function (el, type, fn, capture) {
-    var bind = window.addEventListener ? 'addEventListener' : 'attachEvent';
-    var prefix = bind !== 'addEventListener' ? 'on' : '';
-    el[bind](prefix + type, fn, capture || false);
-    return fn;
-  },
+/**
+ * Bind `el` event `type` to `fn`.
+ *
+ * @param {Element} el
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
 
-  /**
-   * Unbind `el` event `type`'s callback `fn`.
-   *
-   * @param {Element} el
-   * @param {String} type
-   * @param {Function} fn
-   * @param {Boolean} capture
-   * @return {Function}
-   * @api public
-   */
-
-  unbind: function (el, type, fn, capture) {
-    var bind = window.addEventListener ? 'addEventListener' : 'attachEvent';
-    var prefix = bind !== 'addEventListener' ? 'on' : '';
-    var unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent';
-    el[unbind](prefix + type, fn, capture || false);
-    return fn;
-  },
+const bind = function (el, type, fn, capture) {
+  var bind = window.addEventListener ? 'addEventListener' : 'attachEvent'
+  var prefix = bind !== 'addEventListener' ? 'on' : ''
+  el[bind](prefix + type, fn, capture || false)
+  return fn
 }
 
-export default events
+/**
+ * Unbind `el` event `type`'s callback `fn`.
+ *
+ * @param {Element} el
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+const unbind = function (el, type, fn, capture) {
+  var bind = window.addEventListener ? 'addEventListener' : 'attachEvent'
+  var prefix = bind !== 'addEventListener' ? 'on' : ''
+  var unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent'
+  el[unbind](prefix + type, fn, capture || false)
+  return fn
+}
+export default {
+  bind,
+  unbind
+}

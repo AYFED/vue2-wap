@@ -92,6 +92,7 @@ export default {
       return false
     },
     labelClass () {
+      if (!this.$parent) return {}
       return {
         'ayui-cell-justify': this.$parent.labelAlign === 'justify' || this.$parent.$parent.labelAlign === 'justify'
       }

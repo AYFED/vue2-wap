@@ -1,8 +1,7 @@
 /**
  * Module dependencies.
  */
-
-import { indexof } from '../utils';
+import { indexof } from '../utils'
 
 /**
  * Whitespace regexp.
@@ -15,6 +14,18 @@ var re = /\s+/
  */
 
 var toString = Object.prototype.toString
+
+/**
+ * Wrap `el` in a `ClassList`.
+ *
+ * @param {Element} el
+ * @return {ClassList}
+ * @api public
+ */
+
+export default function (el) {
+  return new ClassList(el)
+}
 
 /**
  * Initialize a new ClassList for `el`.
@@ -172,16 +183,4 @@ ClassList.prototype.contains = function (name) {
   return this.list
     ? this.list.contains(name)
     : !!~indexof(this.array(), name)
-}
-
-/**
- * Wrap `el` in a `ClassList`.
- *
- * @param {Element} el
- * @return {ClassList}
- * @api public
- */
-
-export default function (el) {
-  return new ClassList(el)
 }

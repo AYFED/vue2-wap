@@ -90,9 +90,7 @@ export default {
     this.removeModalClassName()
   },
   methods: {
-    /**
-    * https://benfrain.com/z-index-stacking-contexts-experimental-css-and-ios-safari/
-    */
+
     fixSafariOverflowScrolling (type) {
       if (!this.$overflowScrollingList.length) return
       // if (!/iphone/i.test(navigator.userAgent)) return

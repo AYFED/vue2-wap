@@ -3,8 +3,16 @@
  * dependencies.
  */
 
-import emitter from './emitter';
-import events from './event';
+import emitter from './emitter'
+import event from './event'
+
+/**
+ * export `Mouse`
+ */
+
+export default function (el, obj) {
+  return new Mouse(el, obj)
+}
 
 /**
  * initialize new `Mouse`.
@@ -37,8 +45,8 @@ Mouse.prototype.bind = function () {
   // up
   function up (e) {
     obj.onmouseup && obj.onmouseup(e)
-    events.unbind(document, 'mousemove', move)
-    events.unbind(document, 'mouseup', up)
+    event.unbind(document, 'mousemove', move)
+    event.unbind(document, 'mouseup', up)
     self.emit('up', e)
   }
 
@@ -51,13 +59,13 @@ Mouse.prototype.bind = function () {
   // down
   self.down = function (e) {
     obj.onmousedown && obj.onmousedown(e)
-    events.bind(document, 'mouseup', up)
-    events.bind(document, 'mousemove', move)
+    event.bind(document, 'mouseup', up)
+    event.bind(document, 'mousemove', move)
     self.emit('down', e)
   }
 
   // bind all.
-  events.bind(this.el, 'mousedown', self.down)
+  event.bind(this.el, 'mousedown', self.down)
 
   return this
 }
@@ -69,14 +77,6 @@ Mouse.prototype.bind = function () {
  */
 
 Mouse.prototype.unbind = function () {
-  events.unbind(this.el, 'mousedown', this.down)
+  event.unbind(this.el, 'mousedown', this.down)
   this.down = null
-}
-
-/**
- * export `Mouse`
- */
-
-export default function (el, obj) {
-  return new Mouse(el, obj)
 }

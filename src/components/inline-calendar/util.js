@@ -197,10 +197,7 @@ export function getDays ({year, month, value, rangeBegin, rangeEnd, returnSixRow
     month: month,
     month_str: month + 1,
     days: temp.map(line => {
-      /**
-      * https://github.com/airyland/ayui/issues/1361
-      * @todo day will be changed to weekDay after v3.0
-      */
+
       line.map((item, index) => {
         item.date = item.day
         item.weekDay = index
