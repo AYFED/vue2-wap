@@ -37,7 +37,14 @@ export default {
         this.$refs.sticky.bindSticky()
       })
     }
-  }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(()=>{
+        this.$refs.sticky.bindSticky()
+      },1000)
+    })
+  },
 }
 </script>
 <style lang="less" scoped>

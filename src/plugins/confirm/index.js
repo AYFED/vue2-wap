@@ -53,8 +53,7 @@ const plugin = {
       prompt(placeholder, options) {
         this.show(Object.assign({}, options, {
           placeholder,
-          showInput: true,
-          inputAttrs: {type: 'string'}
+          showInput: true
         }))
       },
       hide() {

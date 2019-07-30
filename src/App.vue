@@ -246,6 +246,10 @@
         overflow-x: hidden;
     }
 
+    ::-webkit-scrollbar{
+        display:none;
+    }
+
     .ayui-tab {
         height: 100%;
     }

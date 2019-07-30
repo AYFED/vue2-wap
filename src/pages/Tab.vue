@@ -34,15 +34,15 @@
     <br/>
     <divider>{{ $t('set bar-active-color')}}</divider>
     <div style="width: 100%;overflow:scroll;-webkit-overflow-scrolling:touch;">
-      <tab style="width:500px;" bar-active-color="#668599" :line-width="1">
+      <tab style="width:500px;" bar-active-color="#668599">
         <tab-item>已发货</tab-item>
         <tab-item selected>未发货</tab-item>
-        <tab-item>全部订单</tab-item>
-        <tab-item>全部订单</tab-item>
-        <tab-item>全部订单</tab-item>
+        <tab-item>全部订单1</tab-item>
+        <tab-item>全部订单2</tab-item>
+        <tab-item>全部订单3</tab-item>
+        <tab-item>全部订单4</tab-item>
       </tab>
     </div>
-
     <br/>
     <br/>
     <br/>
@@ -81,6 +81,14 @@
     <br/>
     <br/>
     <br/>
+    <divider>scroll</divider>
+    <tab>
+      <tab-item v-for="n in 8" :key="n" :selected="n===1">已发货{{ n }}</tab-item>
+    </tab>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div>
        <tab :line-width=2 active-color='#BD10E0' v-model="index">
         <tab-item class="ayui-center" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
@@ -111,12 +119,12 @@
     <br/>
     <br/>
     <br/>
-    <sticky scrollBox="ayui_view_box_body" :check-sticky-support="false" :offset="46">
+    <sticky scrollBox="ayui_view_box_body" ref="sticky" :check-sticky-support="false" :offset="46">
       <tab :line-width=1>
         <tab-item :selected="demo4 === item" v-for="(item, index) in list4" @click="demo4 = item" :key="index">{{item}}</tab-item>
       </tab>
     </sticky>
-    <br v-for="i in 40">
+    <p v-for="i in 40">{{i}}</p>
   </div>
 </template>
 
@@ -188,7 +196,14 @@ export default {
         --this.index
       }
     }
-  }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(()=>{
+        this.$refs.sticky.bindSticky()
+      },1000)
+    })
+  },
 }
 </script>
 

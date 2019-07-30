@@ -1,7 +1,4 @@
-/**
-* import { CloseDialogsPlugin } from 'ayui'
-* Vue.use(CloseDialogsPlugin, router)
-*/
+
 export default {
   install (Vue, router) {
     router.beforeEach((to, from, next) => {

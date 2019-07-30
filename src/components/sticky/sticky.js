@@ -32,7 +32,9 @@ export default function (nav, options = {}) {
   if (typeof scrollBox === 'string') {
     scrollBox = document.getElementById(scrollBox)
     if (!scrollBox) {
-      
+      if (process.env.NODE_ENV === 'development') {
+        console.error('[ayui] sticky:scroll-box element doesn\'t exist')
+      }
       return
     }
   }

@@ -284,12 +284,12 @@ export default {
   display: none;
 }
 
-.scrollable .vux-tab-ink-bar {
+.scrollable .ayui-tab-ink-bar {
   bottom: 17px;
   position: absolute;
 }
 
-.scrollable .vux-tab-item {
+.scrollable .ayui-tab-item {
   flex: 0 0 22%;
 }
 </style>

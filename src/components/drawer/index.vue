@@ -55,6 +55,9 @@ export default {
       if (!this.show) {
         this.translateX = 0
       } else {
+        if(this.drawerWidth == 0){
+          this.drawerWidth = this.$refs.drawer.clientWidth
+        }
         this.translateX = this.placement === 'left' ? this.drawerWidth : -this.drawerWidth
       }
     }

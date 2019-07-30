@@ -6,7 +6,7 @@
       <x-button @click.native="changeValue('2017-11-11')" :disabled="format !== 'YYYY-MM-DD'" type="primary"> {{ $t('Set 2017-11-11') }} </x-button>
       <x-button @click.native="changeValue('2016-08-08')" :disabled="format !== 'YYYY-MM-DD'" type="primary"> {{ $t('Set 2016-08-08') }} </x-button>
       <x-button @click.native="toggleFormat" :disabled="format === 'YYYY-MM-DD HH'" type="primary"> {{ $t('Toggle format') }} </x-button>
-      <x-button @click.native="changeFormatAndValue" type="primary"> {{ $t('Format 2019-10-23 10') }} </x-button>
+      <x-button @click.native="changeFormatAndValue" type="primary" style="width: 75%;"> {{ $t('Format 2019-10-23 10') }} </x-button>
       <x-button @click.native="showPopup = true" type="primary"> {{ $t('Show popup with datetime-view') }} </x-button>
     </div>
     <div v-transfer-dom>
