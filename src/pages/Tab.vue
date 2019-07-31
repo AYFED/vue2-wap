@@ -33,7 +33,7 @@
     <br/>
     <br/>
     <divider>{{ $t('set bar-active-color')}}</divider>
-    <div style="width: 100%;overflow:scroll;-webkit-overflow-scrolling:touch;">
+    <div style="width: 100%;overflow:scroll;-webkit-overflow-scrolling:touch;" id="demotab">
       <tab style="width:500px;" bar-active-color="#668599">
         <tab-item>已发货</tab-item>
         <tab-item selected>未发货</tab-item>

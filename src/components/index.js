@@ -217,5 +217,6 @@ export {
   VPie,
   Agree,
   XVideo,
-  IndexList
+  IndexList,
+
 }
