@@ -38,8 +38,8 @@ export const stringify = function (obj, sep, eq, arrayKey) {
   arrayKey = arrayKey || false;
 
   var buf = [],
-    key, val;
-  var escape = escape;
+      key, val;
+  var escape = encodeURIComponent;
 
   for (key in obj) {
     if (!hasOwnProperty.call(obj, key)) continue;
@@ -56,10 +56,10 @@ export const stringify = function (obj, sep, eq, arrayKey) {
       for (var i = 0; i < val.length; i++) {
         if (isPrimitive(val[i])) {
           buf.push(
-            key,
-            (arrayKey ? escape('[]') : '') + eq,
-            escape(val[i] + ''),
-            sep);
+              key,
+              (arrayKey ? escape('[]') : '') + eq,
+              escape(val[i] + ''),
+              sep);
         }
       }
     }
@@ -95,7 +95,9 @@ export const parse = function (str, sep, eq) {
 
   var pairs = str.split(sep || '&');
   eq = eq || '=';
-  var unescape = unescape;
+  var unescape = function (s) {
+    return decodeURIComponent(s.replace(/\+/g, ' '));
+  };
 
   for (var i = 0; i < pairs.length; i++) {
 
@@ -128,16 +130,16 @@ var isArray = Array.isArray || function (val) {
   return toString.call(val) === '[object Array]';
 };
 var trim = String.prototype.trim ?
-  function (str) {
-    return (str == null) ?
-      '' :
-      String.prototype.trim.call(str);
-  } :
-  function (str) {
-    return (str == null) ?
-      '' :
-      str.toString().replace(/^\s+/, '').replace(/\s+$/, '');
-  };
+    function (str) {
+      return (str == null) ?
+          '' :
+          String.prototype.trim.call(str);
+    } :
+    function (str) {
+      return (str == null) ?
+          '' :
+          str.toString().replace(/^\s+/, '').replace(/\s+$/, '');
+    };
 
 /**
  * Checks to see if an object is a plain object (created using "{}" or
@@ -153,8 +155,8 @@ function isPlainObject(o) {
    *   ie678 === false, other === true
    */
   return o &&
-    toString.call(o) === '[object Object]' &&
-    'isPrototypeOf' in o;
+      toString.call(o) === '[object Object]' &&
+      'isPrototypeOf' in o;
 }
 
 /**

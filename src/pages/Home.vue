@@ -19,27 +19,32 @@
 </template>
 
 <script>
-  import {Cell, Group} from '@/components';
+    import {Cell, Group} from '@/components';
+    import querystring from '@/tools/querystring'
 
-  const pkg = require('../../package.json');
-  const version = pkg.version;
-  const vueVersion = pkg.dependencies.vue.split('^').length == 1 ?
-      pkg.dependencies.vue.split('^')[0] :
-      pkg.dependencies.vue.split('^')[1];
+    const pkg = require('../../package.json');
+    const version = pkg.version;
+    const vueVersion = pkg.dependencies.vue.split('^').length == 1 ?
+        pkg.dependencies.vue.split('^')[0] :
+        pkg.dependencies.vue.split('^')[1];
 
-  export default {
-    name: 'home',
-    components: {
-      Cell,
-      Group
-    },
-    data() {
-      return {
-        version,
-        vueVersion,
-      };
-    },
-  };
+    export default {
+        name: 'home',
+        components: {
+            Cell,
+            Group
+        },
+        data() {
+            return {
+                version,
+                vueVersion,
+            };
+        },
+        mounted() {
+            console.log(querystring.parse('a=b&c=d'))
+            console.log(querystring.stringify({a: 'b', c: 'd'}))
+        }
+    };
 </script>
 
 <style scoped>

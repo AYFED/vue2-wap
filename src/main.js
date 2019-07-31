@@ -57,7 +57,7 @@ const shouldUseTransition = !/transition=none/.test(location.href);
 store.registerModule('ayui', {
   state: {
     demoScrollTop: 0,
-    isLoading: true,
+    isLoading: false,
     direction: shouldUseTransition ? 'forward' : '',
     count: 0,
   },
@@ -101,8 +101,11 @@ Vue.use(DatetimePlugin);
 // test
 Vue.use(AppPlugin, store);
 
-const FastClick = require('fastclick');
-FastClick.attach(document.body);
+import FastClick from 'fastclick'
+const device = navigator.userAgent.toLowerCase().match(/cpu iphone os (.*?) like mac os/)
+if (!device || parseInt(device[1]) < 11) {
+  FastClick.attach(document.body)
+}
 
 // 请求拦截器
 Vue.http.interceptors.request.use((config) => {
