@@ -20,7 +20,6 @@
 
 <script>
     import {Cell, Group} from '@/components';
-    import querystring from '@/tools/querystring'
 
     const pkg = require('../../package.json');
     const version = pkg.version;
@@ -41,8 +40,6 @@
             };
         },
         mounted() {
-            console.log(querystring.parse('a=b&c=d'))
-            console.log(querystring.stringify({a: 'b', c: 'd'}))
         }
     };
 </script>
