@@ -15,7 +15,7 @@
     "array-map": "^0.0.0",
     "array-shuffle": "^1.0.1",
     "autosize": "^4.0.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "big.js": "^5.0.3",
     "blueimp-md5": "^2.10.0",
