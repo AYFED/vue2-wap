@@ -33,7 +33,7 @@
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "shake.js": "^1.2.2",
-    "validator": "^10.1.0",
+    "validator": "^13.7.0",
     "vanilla-masker": "^1.2.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
